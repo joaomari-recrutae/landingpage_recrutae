@@ -221,41 +221,56 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <script src="blog-loader.js?v=1"></script>
   <script src="blog-data.js"></script>
   <script src="script.js?v=4"></script>
   <script>
+    // Fallback estático: só renderiza se o blog-loader não encontrou o post no Supabase.
+    // Espera até 3s pelo loader terminar antes de tentar renderizar do blog-data.js
     document.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const postId = params.get('post') || 'engenharia-da-escolha';
-      const post = blogData[postId];
+      let tries = 0;
+      const maxTries = 30; // 30 * 100ms = 3s
 
-      if (post) {
-        // Update Meta Tags & Title
-        document.title = `${post.title} | Recrutaê Blog`;
-        document.querySelector('meta[name="description"]')?.setAttribute('content', post.title);
-        document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
-        document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', post.title);
+      const trigger = () => {
+        tries++;
+        // Se o loader renderizou, aborta o fallback
+        if (window.__blogLoaderRendered) return;
 
-        // Update Hero Content
-        document.querySelector('.breadcrumb span:last-child').textContent = post.tag;
-        document.querySelector('.badge.badge-gold').textContent = post.tag;
-        document.querySelector('.page-hero-title').innerHTML = post.title.replace('Recrutamento Executivo', '<em>Recrutamento Executivo</em>');
-        document.querySelector('.article-meta').innerHTML = `${post.date} &nbsp;·&nbsp; ${post.readTime} &nbsp;·&nbsp; Equipe Recrutaê`;
-
-        // Update Article Body
-        document.querySelector('.article-hero-img').style.background = `url('${post.image}') center/cover no-repeat`;
-        document.querySelector('.article-body').innerHTML = post.content;
-
-        // Update Tags
-        const tagsContainer = document.querySelector('.article-tags');
-        if (tagsContainer) {
-          tagsContainer.innerHTML = `<span class="chip">${post.tag}</span>` + 
-            (postId === 'engenharia-da-escolha' ? '<span class="chip">Recrutamento</span><span class="chip">IA</span><span class="chip">Middle Management</span>' : '');
+        // Se o loader ainda está pendente e temos tries disponíveis, espera mais
+        if (window.__blogLoaderPending && tries < maxTries) {
+          setTimeout(trigger, 100);
+          return;
         }
-      } else {
-        // Redirect to blog if post not found
-        // window.location.href = 'blog.html';
-      }
+
+        // Caso contrário, faz o render do fallback estático
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('post') || 'engenharia-da-escolha';
+        const post = blogData[postId];
+
+        if (post) {
+          document.title = `${post.title} | Recrutaê Blog`;
+          document.querySelector('meta[name="description"]')?.setAttribute('content', post.title);
+          document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
+          document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', post.title);
+
+          document.querySelector('.breadcrumb span:last-child').textContent = post.tag;
+          document.querySelector('.badge.badge-gold').textContent = post.tag;
+          document.querySelector('.page-hero-title').innerHTML = post.title.replace('Recrutamento Executivo', '<em>Recrutamento Executivo</em>');
+          document.querySelector('.article-meta').innerHTML = `${post.date} &nbsp;·&nbsp; ${post.readTime} &nbsp;·&nbsp; Equipe Recrutaê`;
+
+          document.querySelector('.article-hero-img').style.background = `url('${post.image}') center/cover no-repeat`;
+          document.querySelector('.article-body').innerHTML = post.content;
+
+          const tagsContainer = document.querySelector('.article-tags');
+          if (tagsContainer) {
+            tagsContainer.innerHTML = `<span class="chip">${post.tag}</span>` +
+              (postId === 'engenharia-da-escolha' ? '<span class="chip">Recrutamento</span><span class="chip">IA</span><span class="chip">Middle Management</span>' : '');
+          }
+        }
+      };
+
+      setTimeout(trigger, 100);
     });
   </script>
 </body>

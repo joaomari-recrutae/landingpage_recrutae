@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recrutaê Admin</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="assets/favicon-square.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════ LOGIN ═══════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="assets/logo.png" alt="Recrutaê" onerror="this.style.display='none'">
+      <p>Painel Administrativo</p>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="admin@recrutae.com.br" autocomplete="email">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn-login" id="btn-login">Entrar</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ APP ═══════════════════════ -->
+<div id="app">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/logo.png" alt="Recrutaê" onerror="this.style.display='none'">
+      <small>Admin Panel</small>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" data-tab="analytics">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="10" width="4" height="7" rx="1"/>
+          <rect x="7" y="6" width="4" height="11" rx="1"/>
+          <rect x="13" y="2" width="4" height="15" rx="1"/>
+        </svg>
+        Analytics
+      </a>
+      <a class="nav-item" data-tab="leads">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="7" cy="5" r="3"/>
+          <path d="M1 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+          <path d="M13 8a3 3 0 1 0 0-6M17 16c0-2.8-1.8-5.2-4-5.8"/>
+        </svg>
+        Leads
+      </a>
+      <a class="nav-item" data-tab="contacts">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1.5" y="3.5" width="15" height="11" rx="1.5"/>
+          <path d="M2 4.5 9 10l7-5.5"/>
+        </svg>
+        Contatos
+      </a>
+      <a class="nav-item" data-tab="blog">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3h9l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/>
+          <path d="M12 3v3h3M5 9h8M5 12h8M5 15h5"/>
+        </svg>
+        Blog
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-label">Sessão</div>
+      <div class="user-email" id="user-email-display"></div>
+      <button class="btn-logout" id="btn-logout">Sair</button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- ═══ ANALYTICS ═══ -->
+    <div id="tab-analytics" class="tab-content active">
+      <div class="page-header">
+        <div class="page-overline">Recrutaê Admin</div>
+        <div class="page-title">Analytics</div>
+        <div class="page-subtitle">Visitas, cliques e conversões do site público</div>
+      </div>
+
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="kpi-card accent-cream">
+          <div class="kpi-label">Visitas Totais</div>
+          <div class="kpi-value" id="kpi-views">—</div>
+          <div class="kpi-sub" id="kpi-views-sub"></div>
+        </div>
+        <div class="kpi-card accent-gold">
+          <div class="kpi-label">Cliques em CTA</div>
+          <div class="kpi-value gold" id="kpi-cta">—</div>
+          <div class="kpi-sub" id="kpi-cta-sub"></div>
+        </div>
+        <div class="kpi-card accent-blue">
+          <div class="kpi-label">Wizards Iniciados</div>
+          <div class="kpi-value blue" id="kpi-starts">—</div>
+          <div class="kpi-sub" id="kpi-starts-sub"></div>
+        </div>
+        <div class="kpi-card accent-green">
+          <div class="kpi-label">Wizards Completos</div>
+          <div class="kpi-value green" id="kpi-complete">—</div>
+          <div class="kpi-sub" id="kpi-conv-rate"></div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="section-card">
+          <div class="section-header"><div class="section-title">Visitas por página</div></div>
+          <div id="pages-chart"><div class="loading-center"><div class="spinner"></div></div></div>
+        </div>
+        <div class="section-card">
+          <div class="section-header"><div class="section-title">Origem do tráfego</div></div>
+          <div id="referrer-chart"><div class="loading-center"><div class="spinner"></div></div></div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header"><div class="section-title">Atividade — últimos 21 dias</div></div>
+        <div id="timeline-chart"><div class="loading-center"><div class="spinner"></div></div></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header"><div class="section-title">Eventos recentes</div></div>
+        <div id="events-list"><div class="loading-center"><div class="spinner"></div></div></div>
+      </div>
+    </div>
+
+    <!-- ═══ LEADS ═══ -->
+    <div id="tab-leads" class="tab-content">
+      <div class="page-header">
+        <div class="page-overline">Recrutaê Admin</div>
+        <div class="page-title">Leads</div>
+        <div class="page-subtitle">Formulários enviados pelo wizard de busca de candidatos</div>
+      </div>
+      <div class="leads-filters">
+        <input type="text" class="search-input" id="lead-search" placeholder="Buscar por nome, empresa ou cargo…">
+        <select class="filter-select" id="status-filter">
+          <option value="">Todos os status</option>
+          <option value="new">Novo</option>
+          <option value="contacted">Contactado</option>
+          <option value="converted">Convertido</option>
+          <option value="disqualified">Desqualificado</option>
+        </select>
+        <span class="leads-count" id="leads-count"></span>
+      </div>
+      <div id="leads-list"><div class="loading-center"><div class="spinner"></div></div></div>
+    </div>
+
+    <!-- ═══ CONTATOS ═══ -->
+    <div id="tab-contacts" class="tab-content">
+      <div class="page-header">
+        <div class="page-overline">Recrutaê Admin</div>
+        <div class="page-title">Contatos</div>
+        <div class="page-subtitle">Mensagens enviadas pelo formulário "Entre em contato" do site</div>
+      </div>
+      <div class="leads-filters">
+        <input type="text" class="search-input" id="contact-search" placeholder="Buscar por nome, empresa, e-mail ou cargo…">
+        <select class="filter-select" id="contact-status-filter">
+          <option value="">Todos os status</option>
+          <option value="new">Novo</option>
+          <option value="contacted">Contactado</option>
+          <option value="converted">Convertido</option>
+          <option value="disqualified">Desqualificado</option>
+        </select>
+        <span class="leads-count" id="contacts-count"></span>
+      </div>
+      <div id="contacts-list"><div class="loading-center"><div class="spinner"></div></div></div>
+    </div>
+
+    <!-- ═══ BLOG ═══ -->
+    <div id="tab-blog" class="tab-content">
+      <!-- LIST VIEW -->
+      <div id="blog-list-view">
+        <div class="page-header" style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
+          <div>
+            <div class="page-overline">Recrutaê Admin</div>
+            <div class="page-title">Blog</div>
+            <div class="page-subtitle">Publicações do site público — crie, edite e gerencie posts</div>
+          </div>
+          <button class="btn-primary" id="btn-new-post">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg>
+            Novo post
+          </button>
+        </div>
+        <div class="leads-filters">
+          <input type="text" class="search-input" id="post-search" placeholder="Buscar por título ou tag…">
+          <select class="filter-select" id="post-status-filter">
+            <option value="">Todos</option>
+            <option value="true">Publicados</option>
+            <option value="false">Rascunhos</option>
+          </select>
+          <span class="leads-count" id="posts-count"></span>
+        </div>
+        <div id="posts-list"><div class="loading-center"><div class="spinner"></div></div></div>
+      </div>
+
+      <!-- EDITOR VIEW -->
+      <div id="blog-editor-view" style="display:none">
+        <div class="page-header" style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div>
+            <button class="btn-ghost" id="btn-back-to-list">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3 4 7l5 4"/></svg>
+              Voltar
+            </button>
+            <div class="page-title" id="editor-title" style="margin-top:8px">Novo post</div>
+            <div class="page-subtitle" id="editor-subtitle">Preencha os campos abaixo</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn-ghost" id="btn-delete-post" style="display:none">Excluir</button>
+            <button class="btn-secondary" id="btn-save-draft">Salvar rascunho</button>
+            <button class="btn-primary" id="btn-publish">Publicar</button>
+          </div>
+        </div>
+
+        <div id="editor-msg" class="editor-msg" style="display:none"></div>
+
+        <div class="editor-grid">
+          <!-- COLUNA PRINCIPAL: TÍTULO + EDITOR -->
+          <div class="editor-main">
+            <div class="section-card">
+              <div class="field">
+                <label>Título</label>
+                <input type="text" id="f-title" class="input-large" placeholder="Título do artigo...">
+              </div>
+              <div class="field">
+                <label>Slug (URL amigável)</label>
+                <div style="display:flex;gap:8px;align-items:center">
+                  <span style="color:var(--muted);font-size:13px">/blog-post.html?post=</span>
+                  <input type="text" id="f-slug" class="input" placeholder="titulo-do-post" style="flex:1">
+                </div>
+                <div class="field-hint">Gerado automaticamente do título — pode editar</div>
+              </div>
+              <div class="field">
+                <label>Resumo (aparece na lista do blog)</label>
+                <textarea id="f-excerpt" class="input" rows="3" placeholder="Um parágrafo curto que aparece na página do blog..." maxlength="220"></textarea>
+                <div class="field-hint"><span id="excerpt-count">0</span>/220 caracteres</div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="section-header"><div class="section-title">Conteúdo do artigo</div></div>
+              <div id="quill-editor" style="min-height:520px"></div>
+              <div class="field-hint" style="margin-top:12px">Dica: você pode colar imagens direto (Ctrl+V) ou usar o botão de imagem na toolbar.</div>
+            </div>
+          </div>
+
+          <!-- COLUNA LATERAL: METADADOS -->
+          <div class="editor-side">
+            <div class="section-card">
+              <div class="section-header"><div class="section-title">Publicação</div></div>
+              <div class="field">
+                <label>Categoria / Tag</label>
+                <input type="text" id="f-tag" class="input" placeholder="Estratégia" list="tag-suggestions">
+                <datalist id="tag-suggestions">
+                  <option value="Estratégia">
+                  <option value="Gestão">
+                  <option value="Mercado">
+                  <option value="Tecnologia">
+                  <option value="Recrutamento">
+                  <option value="Cultura">
+                  <option value="Retenção">
+                  <option value="Liderança">
+                </datalist>
+              </div>
+              <div class="field">
+                <label>Tempo de leitura</label>
+                <input type="text" id="f-readtime" class="input" placeholder="5 min de leitura">
+                <div class="field-hint" id="readtime-auto">Calculado automaticamente do texto</div>
+              </div>
+              <div class="field">
+                <label>Data de publicação</label>
+                <input type="datetime-local" id="f-published-at" class="input">
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="section-header"><div class="section-title">Capa do post</div></div>
+              <div id="cover-preview" class="img-preview img-preview-cover"></div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <input type="file" id="f-cover-file" accept="image/*" style="display:none">
+                <button class="btn-secondary btn-mini" id="btn-cover-upload">Enviar imagem</button>
+                <button class="btn-ghost btn-mini" id="btn-cover-url">Usar URL</button>
+              </div>
+              <input type="text" id="f-cover-url" class="input" placeholder="https://..." style="margin-top:8px;display:none">
+              <div class="field-hint" style="margin-top:8px">Recomendado: 1200 × 630px (JPG, PNG ou SVG)</div>
+            </div>
+
+            <div class="section-card">
+              <div class="section-header"><div class="section-title">Autor</div></div>
+              <div class="field">
+                <label>Nome do autor</label>
+                <input type="text" id="f-author" class="input" placeholder="Equipe Recrutaê" value="Equipe Recrutaê">
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;margin-top:6px">
+                <div id="author-photo-preview" class="img-preview img-preview-author"></div>
+                <div style="flex:1">
+                  <input type="file" id="f-author-file" accept="image/*" style="display:none">
+                  <button class="btn-secondary btn-mini" id="btn-author-upload">Enviar foto</button>
+                  <button class="btn-ghost btn-mini" id="btn-author-url" style="margin-left:6px">URL</button>
+                  <input type="text" id="f-author-url" class="input" placeholder="https://..." style="margin-top:8px;display:none">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="app.js?v=1"></script>
+<script src="blog-admin.js?v=1"></script>
+</body>
+</html>
