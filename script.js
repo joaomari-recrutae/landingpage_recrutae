@@ -238,21 +238,38 @@ function initIndustries() {
   const grid = document.getElementById('industriesGrid');
   if (!grid) return;
 
+  // Ícone de linha 24x24, herda a cor do card
+  const ico = (paths) => `<span class="ind-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg></span>`;
+
   const items = [
-    { name: 'Tecnologia',           href: 'industria-template.html?ind=tecnologia' },
-    { name: 'Telecom',              href: 'industria-template.html?ind=telecom' },
-    { name: 'Mídia',                href: 'industria-template.html?ind=midia' },
-    { name: 'Varejo',               href: 'industria-template.html?ind=varejo' },
-    { name: 'Bens de Consumo',      href: 'industria-template.html?ind=bens-consumo' },
-    { name: 'Logística',            href: 'industria-template.html?ind=logistica' },
-    { name: 'Serviços Financeiros', href: 'industria-template.html?ind=servicos-financeiros' },
-    { name: 'Banking',              href: 'industria-template.html?ind=banking' },
-    { name: 'Agro',                 href: 'industria-template.html?ind=agro' },
-    { name: 'Energia',              href: 'industria-template.html?ind=energia' },
-    { name: 'Seguros',              href: 'industria-template.html?ind=seguros' },
-    { name: 'Educação',             href: 'industria-template.html?ind=educacao' },
-    { name: 'Saúde',                href: 'industria-template.html?ind=saude' },
-    { name: 'Games',                href: 'industria-template.html?ind=games' },
+    { name: 'Tecnologia',           href: 'industria-template.html?ind=tecnologia',
+      icon: ico('<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/>') },
+    { name: 'Telecom',              href: 'industria-template.html?ind=telecom',
+      icon: ico('<circle cx="12" cy="12" r="2"/><path d="M7.8 16.2a6 6 0 0 1 0-8.5M16.2 7.7a6 6 0 0 1 0 8.5"/><path d="M4.9 19.1a10 10 0 0 1 0-14.2M19.1 4.9a10 10 0 0 1 0 14.2"/>') },
+    { name: 'Mídia',                href: 'industria-template.html?ind=midia',
+      icon: ico('<rect x="2" y="4" width="20" height="15" rx="3"/><path d="M8 22h8"/><path d="m10.5 9 4.5 2.6-4.5 2.6z"/>') },
+    { name: 'Varejo',               href: 'industria-template.html?ind=varejo',
+      icon: ico('<path d="M6.5 2 3.5 6.5V20a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6.5L17.5 2z"/><path d="M3.5 6.5h17"/><path d="M16 10.5a4 4 0 0 1-8 0"/>') },
+    { name: 'Bens de Consumo',      href: 'industria-template.html?ind=bens-consumo',
+      icon: ico('<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7.2 8.7 5 8.7-5"/><path d="M12 22.1V12.2"/><path d="m7.5 4.6 9 5.2"/>') },
+    { name: 'Logística',            href: 'industria-template.html?ind=logistica',
+      icon: ico('<path d="M14 17.5V6.5a1.5 1.5 0 0 0-1.5-1.5h-9A1.5 1.5 0 0 0 2 6.5v10A1 1 0 0 0 3 17.5h1.5"/><path d="M14 9h3.6a2 2 0 0 1 1.6.8l2.4 3.2v3.5a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/><path d="M9 18h6.5"/>') },
+    { name: 'Serviços Financeiros', href: 'industria-template.html?ind=servicos-financeiros',
+      icon: ico('<path d="M3 3v18h18"/><path d="m7 14 3.5-3.5 3 3L19 7"/><path d="M14.5 7H19v4.5"/>') },
+    { name: 'Banking',              href: 'industria-template.html?ind=banking',
+      icon: ico('<path d="m3 10 9-6 9 6"/><path d="M5 10v8M9.7 10v8M14.3 10v8M19 10v8"/><path d="M2.5 21h19"/>') },
+    { name: 'Agro',                 href: 'industria-template.html?ind=agro',
+      icon: ico('<path d="M12 20.5V8.5"/><path d="M12 12.5C12 8.6 8.9 5.5 5 5.5c0 3.9 3.1 7 7 7z"/><path d="M12 15.5c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6z"/><path d="M6.5 20.5h11"/>') },
+    { name: 'Energia',              href: 'industria-template.html?ind=energia',
+      icon: ico('<path d="M13 2 3.8 13.4a.6.6 0 0 0 .5 1H11l-1 7.6 9.2-11.4a.6.6 0 0 0-.5-1H12z"/>') },
+    { name: 'Seguros',              href: 'industria-template.html?ind=seguros',
+      icon: ico('<path d="M12 22s8-4 8-10V5.2L12 2 4 5.2V12c0 6 8 10 8 10z"/><path d="m9 11.8 2.2 2.2 4-4.2"/>') },
+    { name: 'Educação',             href: 'industria-template.html?ind=educacao',
+      icon: ico('<path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6.5 11.3V16c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-4.7"/><path d="M22 9v6"/>') },
+    { name: 'Saúde',                href: 'industria-template.html?ind=saude',
+      icon: ico('<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/><path d="M3.3 13h4.2l1-2 2 4.5 2-6.5 1.5 4h6.7"/>') },
+    { name: 'Games',                href: 'industria-template.html?ind=games',
+      icon: ico('<path d="M17.3 5.5H6.7a4 4 0 0 0-4 3.6C2.6 9.8 2 14.5 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.4-1.4a2 2 0 0 1 1.4-.6h4.4a2 2 0 0 1 1.4.6L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.5-.6-6.2-.7-6.9a4 4 0 0 0-4-3.6z"/><path d="M6.5 11h3.5M8.2 9.2v3.5"/><path d="M15.2 12.2h.01M17.8 10h.01"/>') },
   ];
 
   const arrowSVG = `<svg class="ind-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -263,7 +280,10 @@ function initIndustries() {
     const stagger = delay > 0 ? ` stagger-${delay}` : '';
     return `
       <a href="${item.href}" class="ind-card animate-up${stagger}">
-        <span class="ind-idx">${idx}</span>
+        <span class="ind-top">
+          ${item.icon}
+          <span class="ind-idx">${idx}</span>
+        </span>
         <span class="ind-name">${item.name}</span>
         ${arrowSVG}
       </a>`;
