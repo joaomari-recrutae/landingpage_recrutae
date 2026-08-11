@@ -345,8 +345,8 @@ function initInstagram() {
     .then(r => r.json())
     .then(data => {
       if (!data?.success || !Array.isArray(data.posts) || !data.posts.length) {
-        // Sem posts reais disponíveis — esconde a seção em vez de mostrar algo falso
-        section.style.display = 'none';
+        // API do Instagram ainda não configurada/indisponível — mantém as
+        // 3 imagens reais de posts (fallback) já presentes no HTML
         return;
       }
 
@@ -359,8 +359,7 @@ function initInstagram() {
       `).join('');
     })
     .catch(() => {
-      // Falha de rede/API — mesma regra: esconder em vez de mostrar fake
-      section.style.display = 'none';
+      // Falha de rede/API — mantém o fallback estático já presente no HTML
     });
 }
 
