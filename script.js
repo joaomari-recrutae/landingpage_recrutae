@@ -332,26 +332,36 @@ function initBlogArt() {
 }
 
 function initInstagram() {
-  const items = document.querySelectorAll('.insta-item');
-  const branding = [
-    { name: 'Cultura Recrutaê', color: '#405de6' },
-    { name: 'Bastidores', color: '#833ab4' },
-    { name: 'Vagas Digitais', color: '#E1306C' }
-  ];
+  const grid = document.querySelector('.insta-grid');
+  const section = document.querySelector('.instagram');
+  if (!grid || !section) return;
 
-  items.forEach((item, i) => {
-    if (!branding[i]) return;
-    const label = document.createElement('div');
-    label.style.cssText = 'position:absolute; bottom:12px; left:12px; color:white; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; z-index:2;';
-    label.textContent = branding[i].name;
-    item.appendChild(label);
-    
-    // Simulate post feel with brand color overlay
-    item.style.position = 'relative';
-    const tint = document.createElement('div');
-    tint.style.cssText = `position:absolute; inset:0; background:${branding[i].color}; opacity:0.15; pointer-events:none;`;
-    item.appendChild(tint);
-  });
+  const FEED_URL = 'https://niqouquemmtaokciaxpn.supabase.co/functions/v1/instagram-feed?limit=3';
+  const escHtml = (s) => String(s ?? '').replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+
+  fetch(FEED_URL)
+    .then(r => r.json())
+    .then(data => {
+      if (!data?.success || !Array.isArray(data.posts) || !data.posts.length) {
+        // Sem posts reais disponíveis — esconde a seção em vez de mostrar algo falso
+        section.style.display = 'none';
+        return;
+      }
+
+      grid.innerHTML = data.posts.map(post => `
+        <a href="${escHtml(post.permalink)}" target="_blank" rel="noopener" class="insta-item"
+           style="background-image:url('${escHtml(post.image).replace(/'/g, '%27')}'); background-size:cover; background-position:center; border-radius:16px;"
+           title="${escHtml(post.caption)}">
+          <div class="insta-overlay">Ver no Instagram</div>
+        </a>
+      `).join('');
+    })
+    .catch(() => {
+      // Falha de rede/API — mesma regra: esconder em vez de mostrar fake
+      section.style.display = 'none';
+    });
 }
 
 /* =========================================================

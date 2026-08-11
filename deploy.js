@@ -137,7 +137,7 @@ if (secretsResp.ok || secretsResp.status === 200) {
 // ── 3. Deploy das Edge Functions via CLI ──────────────────────────────────
 console.log('\n③ Fazendo deploy das Edge Functions...');
 
-const FUNCTIONS = ['process-search', 'submit-contact'];
+const FUNCTIONS = ['process-search', 'submit-contact', 'instagram-feed'];
 
 for (const fn of FUNCTIONS) {
   try {
