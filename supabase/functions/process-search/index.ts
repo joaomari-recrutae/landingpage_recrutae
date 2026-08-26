@@ -29,6 +29,18 @@ serve(async (req: Request) => {
     const body = await req.json();
     const contact = body.contact || {};
 
+    const name = String(contact.name || "").trim();
+    const email = String(contact.email || "").trim();
+    const looksAutomated = /^[A-Za-z0-9]{10,}$/.test(name) && /[A-Z]/.test(name) && /[a-z]/.test(name);
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (name.length < 2 || name.length > 100 || looksAutomated || !validEmail) {
+      return new Response(
+        JSON.stringify({ success: false, error: "Dados de contato inválidos." }),
+        { status: 400, headers: { ...CORS, "Content-Type": "application/json" } }
+      );
+    }
+
     // Transcreve um áudio (base64) com Whisper. Retorna "" se não houver/falhar.
     // deno-lint-ignore no-explicit-any
     async function transcribe(audioBase64: any, audioMimeType: any): Promise<string> {
@@ -209,7 +221,7 @@ ${textAnswers.q7 || "(não respondido)"}
     const recruiterEmail = Deno.env.get("RECRUITER_EMAIL") || "";
     const fromEmail      = Deno.env.get("RESEND_FROM_EMAIL") || "onboarding@resend.dev";
 
-    if (recruiterEmail) {
+    if (recruiterEmail && Deno.env.get("ENABLE_CANDIDATE_EMAILS") === "true") {
       const li = (arr: unknown) =>
         Array.isArray(arr)
           ? (arr as string[]).map(x => `<li style="margin-bottom:5px">${x}</li>`).join("")

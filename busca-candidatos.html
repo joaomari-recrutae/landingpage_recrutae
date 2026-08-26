@@ -1323,8 +1323,10 @@
     });
     function valContact() {
       let ok = true;
+      const nameValue = document.getElementById('cName').value.trim();
+      const looksAutomatedName = /^[A-Za-z0-9]{10,}$/.test(nameValue) && /[A-Z]/.test(nameValue) && /[a-z]/.test(nameValue);
       [
-        { id:'cName',    err:'cName-err',    fn: v => v.trim().length > 1 },
+        { id:'cName',    err:'cName-err',    fn: v => v.trim().length > 1 && v.trim().length <= 100 && !looksAutomatedName },
         { id:'cRole',    err:'cRole-err',    fn: v => v.trim().length > 1 },
         { id:'cCompany', err:'cCompany-err', fn: v => v.trim().length > 1 },
         { id:'cEmail',   err:'cEmail-err',   fn: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
