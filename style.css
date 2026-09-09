@@ -1740,6 +1740,18 @@ ul { list-style: none; }
   color: rgba(255,255,255,0.2);
 }
 
+.footer-privacy-link {
+  font-size: 13px;
+  color: var(--cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-privacy-link:hover { color: var(--gold); }
+.footer-privacy-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.form-privacy-note { font-size: 13px; line-height: 1.6; color: var(--cream-dark); margin: 16px 0; }
+.form-privacy-note a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+.form-privacy-note a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
 /* =========================================================
    INTERNAL PAGE STYLES
    ========================================================= */
