@@ -41,11 +41,24 @@
   });
   const followHash = () => {
     const index = panels.findIndex(panel => `#${panel.id}` === location.hash);
-    if (index >= 0) activate(index);
+    if (index >= 0) {
+      activate(index);
+
+    }
   };
   activate(0);
   followHash();
   window.addEventListener('hashchange', followHash);
+  document.querySelectorAll('a[href^="#demo-"]:not([data-tab])').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const index = panels.findIndex(panel => `#${panel.id}` === link.hash);
+      if (index < 0) return;
+      event.preventDefault();
+      activate(index);
+      window.recrutaeScrollToSection(panels[index], true);
+    });
+  });
   document.body.classList.add('ros-demo-enhanced');
 
   const preview = document.querySelector('[data-theme-preview]');
@@ -83,6 +96,15 @@
       move('Inscrito', true);
     });
   }
+
+  document.querySelectorAll('.ros-plan').forEach(plan => {
+    plan.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch') return;
+      const bounds = plan.getBoundingClientRect();
+      plan.style.setProperty('--glow-x', `${event.clientX - bounds.left}px`);
+      plan.style.setProperty('--glow-y', `${event.clientY - bounds.top}px`);
+    }, { passive: true });
+  });
 
   const mobileMenu = document.querySelector('.ros-mobile-nav');
   if (mobileMenu) {

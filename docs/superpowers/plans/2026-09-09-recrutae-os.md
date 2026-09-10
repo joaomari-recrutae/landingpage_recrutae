@@ -34,8 +34,34 @@ Adaptação original em HTML/CSS, sem instalar/copiar componentes React. Brief a
 
 ## Execução e verificação
 
-- [ ] Criar `recrutae-os.html`, `recrutae-os.css`, `recrutae-os.js` e copiar marcas públicas.
-- [ ] Integrar destaque na home e link OS nos menus desktop/mobile e rodapés.
-- [ ] Validar abas por clique e teclado, personalização visual, mudança de etapa e contagens, FAQ e CTAs.
-- [ ] Validar desktop, tablet e celular; sem JavaScript e com movimento reduzido; links e assets locais.
-- [ ] Revisar capturas reais, erros de execução e diff. Entregar prévia para revisão.
+- [x] Criar `recrutae-os.html`, `recrutae-os.css`, `recrutae-os.js` e copiar marcas públicas.
+- [x] Integrar destaque na home e link OS nos menus desktop/mobile e rodapés.
+- [x] Validar abas por clique e teclado, personalização visual, mudança de etapa e contagens, FAQ e CTAs.
+- [x] Validar desktop, tablet e celular; sem JavaScript e com movimento reduzido; links e assets locais.
+- [x] Revisar capturas reais, erros de execução e diff. Entregar prévia para revisão.
+
+## Ajuste pedido durante a execução
+
+Em 10/09, o usuário pediu mais detalhes e cores da landing do OS e uma aba no site principal. A demonstração ganhou fundo tinta, abas âmbar e seção sobre transcrição, evidências de confiabilidade e histórico. A entrada OS foi adicionada a nove menus desktop, ao menu móvel compartilhado e aos rodapés, além do destaque logo após a abertura da home.
+
+O usuário também definiu as marcas: `assets/recrutae-os/recrutae-os-lockup-navy.png` para a assinatura completa e `assets/recrutae-os/recrutae-ros.png` para a versão compacta. Abertura, destaques e menu institucional usam a marca completa; o menu usa tratamento monocromático navy e hover dourado discreto. O cabeçalho OS e a miniatura do painel usam a compacta. O fechamento escuro usa recrutae-ros-navy.png, e o rodapé usa a marca oficial Recrutaê.
+
+## Validação
+
+- `scripts/verify-recrutae-os.cjs`: interações, links para painéis, cinco larguras nas três abas, recursos locais, conteúdo sem JavaScript, movimento reduzido e navegação da home desktop/mobile.
+- Playwright/Chromium: capturas revisadas de abertura, demonstração, quadro e home; nenhuma rolagem horizontal na página; o quadro tem sua própria região rolável identificada.
+- axe-core: verificação WCAG A/AA nas três abas em 1440px e 390px; textos secundários ajustados a partir da medição de contraste.
+- Revisão independente de código: nenhum defeito funcional identificado.
+- `node --check` nos scripts alterados e `git diff --check`.
+
+Prévia local: `/recrutae-os.html`; entrada na home: `/index.html#recrutae-os`. Commit e push autorizados pelo usuário após a aprovação visual.
+
+
+## Refinamentos aprovados
+
+- Cabeçalho OS simplificado com retorno ao site principal e links externos para recrutaeos.com.br.
+- Fundo contínuo na abertura e destaque OS da home; degradê navy, violeta e dourado na abertura OS.
+- Navegação suave compartilhada nas 11 páginas públicas, incluindo menus móveis e links entre páginas.
+- Animações preservadas com movimento reduzido por solicitação expressa do usuário; entradas acionadas apenas ao chegar à área visível.
+- Brilho dourado que acompanha o mouse nos três planos.
+- scripts/verify-scroll-navigation.cjs verifica navegação, movimento reduzido e animações de entrada.

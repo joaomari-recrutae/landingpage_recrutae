@@ -8,19 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initMobileMenu, 'mobileMenu');
   safe(initMarquee, 'marquee');
   safe(initIndustries, 'industries');
-  safe(initScrollAnimations, 'scrollAnimations');
+  try {
+    initScrollAnimations();
+  } catch (error) {
+    console.warn('[recrutae] scroll animations unavailable', error);
+    document.querySelectorAll('.animate-up, .reveal-right').forEach(el => el.classList.add('in-view'));
+  }
   safe(initCounters, 'counters');
   safe(initCarousel, 'carousel');
   safe(initForm, 'form');
-  safe(initSmoothScroll, 'smoothScroll');
   safe(initPageTransitions, 'pageTransitions');
   safe(initInstagram, 'instagram');
   safe(initAnalytics, 'analytics');
 
-  // Safety net: nothing stays invisible if the IntersectionObserver fails
-  setTimeout(() => {
-    document.querySelectorAll('.animate-up:not(.in-view), .reveal-right:not(.in-view)').forEach(el => el.classList.add('in-view'));
-  }, 1500);
 });
 
 /* =========================================================
@@ -106,6 +106,7 @@ function initMobileMenu() {
   if (!hamburger || !overlay) return;
 
   const menuData = [
+    { label: 'Recrutaê OS', href: 'recrutae-os.html' },
     { label: 'Sou empresa', sub: [
       { label: 'Recrutamento e Seleção', href: 'recrutamento-selecao.html' },
       { label: 'Alocação', href: 'alocacao.html' }
@@ -538,36 +539,6 @@ function setupContactForm(form) {
 }
 
 /* =========================================================
-   SMOOTH SCROLL
-   ========================================================= */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      
-      // Se for um dos botões principais de CTA que levam ao final/contato, 
-      // podemos dar um feedback visual ou garantir um scroll bem fluido.
-      const isCta = a.textContent.includes('Enviar') || a.textContent.includes('Reunião') || a.textContent.includes('contato');
-      
-      const offset = (document.getElementById('navbar')?.offsetHeight || 72) + 20;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
-      
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
-
-      // Se for mobile, fecha o menu
-      if (window.closeMobileMenu) window.closeMobileMenu();
-    });
-  });
-}
-
-/* =========================================================
    PAGE TRANSITIONS
    ========================================================= */
 function initPageTransitions() {
@@ -593,7 +564,9 @@ function initPageTransitions() {
 
     a.addEventListener('click', e => {
       // Verifica se é um clique simples (sem ctrl/cmd)
-      if (e.metaKey || e.ctrlKey) return;
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      const url = new URL(a.href, location.href);
+      if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
 
       e.preventDefault();
       const dest = a.href;

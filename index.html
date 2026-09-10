@@ -26,8 +26,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=11">
   <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
+  <script src="scroll-navigation.js?v=2" defer></script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -41,6 +42,7 @@
       </a>
 
       <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="recrutae-os.html" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa
             <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -113,10 +115,11 @@
   <main>
 
     <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
+    <div class="home-intro">
       <div class="hero-blob-gold"></div>
       <div class="hero-blob-navy"></div>
       <div class="hero-glow-beam" aria-hidden="true"></div>
+    <section class="hero" id="home">
       <div class="hero-watermark" aria-hidden="true"></div>
 
       <div class="hero-inner container reveal-right">
@@ -147,6 +150,26 @@
         scroll
       </div>
     </section>
+
+    <section class="os-spotlight" id="recrutae-os" aria-labelledby="os-spotlight-title">
+      <div class="container os-spotlight-grid">
+        <div class="os-spotlight-copy">
+          <img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="2391" height="567" loading="lazy">
+          <h2 id="os-spotlight-title">Sua marca na página.<br>Seu time no controle.</h2>
+          <p>Conheça o sistema da Recrutaê: página de carreiras, candidatos por etapa, triagem com IA e entrevistas em vídeo. Tudo conectado à sua próxima contratação.</p>
+          <a href="recrutae-os.html" class="os-spotlight-button">Conhecer o Recrutaê OS <span aria-hidden="true">↗</span></a>
+          <a href="https://recrutaeos.com.br" class="os-spotlight-platform" target="_blank" rel="noopener noreferrer">Acessar a plataforma <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="os-spotlight-preview" aria-hidden="true">
+          <div class="os-spotlight-browser"><span>● ● ●</span> suaempresa.recrutaeos.com.br</div>
+          <div class="os-spotlight-brand"><span>a.</span><div><strong>A próxima oportunidade<br>tem a sua marca.</strong><small>Página de carreiras da sua empresa</small></div></div>
+          <div class="os-spotlight-connector">↓ <span>Candidaturas no mesmo processo</span></div>
+          <div class="os-spotlight-stages"><div><i></i>Inscrito<span>Currículo recebido</span></div><div><i></i>Triagem<span>Apoio de IA</span></div><div><i></i>Entrevista<span>Decisão com contexto</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    </div>
 
     <!-- ===== FREEMIUM CTA ===== -->
     <section style="background:var(--cream);padding:80px 0;border-bottom:1px solid var(--cream-mid)">
@@ -674,6 +697,7 @@
         </nav>
       </div>
       <div class="footer-bottom">
+        <a class="footer-privacy-link" href="recrutae-os.html">Recrutaê OS</a>
         <a class="footer-privacy-link" href="politica-de-privacidade.html">Política de Privacidade</a>
         <p>© 2026 Recrutaê. Todos os direitos reservados.</p>
         <p>RECRUTAE LTDA – 46.886.680/0001-93</p>
@@ -681,6 +705,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

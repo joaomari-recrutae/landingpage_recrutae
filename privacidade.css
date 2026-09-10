@@ -101,7 +101,3 @@
   .privacy-page .container { padding-left: 20px; padding-right: 20px; }
   .privacy-index ul { grid-template-columns: 1fr; }
 }
-@media (prefers-reduced-motion: reduce) {
-  html:has(.privacy-page) { scroll-behavior: auto; }
-  .privacy-page *, .privacy-page *::before, .privacy-page *::after { transition: none !important; }
-}
