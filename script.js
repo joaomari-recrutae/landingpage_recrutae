@@ -446,8 +446,8 @@ function initCarousel() {
 
 /* =========================================================
    CONTACT FORM — real submission to Supabase Edge Function
-   (saves to the contact_leads table + emails the recruiter,
-    so every lead shows up in the admin page and the inbox)
+   (saves every contact to contact_leads; only commercial leads
+    trigger recruiter email)
    ========================================================= */
 const CONTACT_ENDPOINT = 'https://niqouquemmtaokciaxpn.supabase.co/functions/v1/submit-contact';
 
@@ -505,6 +505,9 @@ function setupContactForm(form) {
     if (!ok) return;
 
     const val = n => form.querySelector(`[name=${n}]`)?.value.trim() || '';
+    const types = [...form.querySelectorAll('input[name=tipo]:checked')].map(c => c.value);
+    const candidateOnly = form.id === 'contactFormCandidato'
+      || (types.includes('candidato') && !types.includes('empresa'));
     const payload = {
       name:       val('nome'),
       email:      val('email'),
@@ -512,7 +515,8 @@ function setupContactForm(form) {
       company:    val('empresa'),
       role:       val('cargo'),
       country:    val('pais'),
-      types:      [...form.querySelectorAll('input[name=tipo]:checked')].map(c => c.value),
+      types,
+      contactKind: candidateOnly ? 'candidate' : 'lead',
       sourcePage: (document.title || '').replace(/\s*[—|].*$/, '').trim() || location.pathname,
     };
 

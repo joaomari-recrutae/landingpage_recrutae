@@ -1,6 +1,6 @@
 // Recrutaê — Supabase Edge Function: submit-contact
-// Recebe os dados do formulário "Entre em contato", salva no banco
-// (tabela contact_leads — visível no admin) e envia um email para o recrutador.
+// Recebe os dados dos formulários, salva no banco (tabela contact_leads —
+// visível no admin) e envia ao recrutador somente os leads comerciais.
 //
 // Deploy: supabase functions deploy submit-contact --no-verify-jwt
 //
@@ -12,6 +12,7 @@
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.0";
+import { assertContactWasSaved, shouldSendLeadEmail } from "./contact-routing.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -36,6 +37,7 @@ serve(async (req: Request) => {
     const country = (body.country || "").toString().trim();
     const types   = Array.isArray(body.types) ? body.types : [];
     const source  = (body.sourcePage || "").toString().trim();
+    const contactKind = (body.contactKind || "").toString().trim();
 
     if (!name || !email) {
       return new Response(
@@ -62,14 +64,16 @@ serve(async (req: Request) => {
       .select("id")
       .single();
 
-    if (dbErr) console.warn("DB insert error:", dbErr);
+    if (dbErr) console.error("DB insert error:", dbErr);
+    assertContactWasSaved(dbErr);
 
     // ── 2. Enviar email via Resend ────────────────────────────────────────
-    let emailStatus = "not_sent";
+    const sendLeadEmail = shouldSendLeadEmail({ contactKind, types, sourcePage: source });
+    let emailStatus = sendLeadEmail ? "not_sent" : "suppressed_candidate";
     const recruiterEmail = Deno.env.get("RECRUITER_EMAIL") || "";
     const fromEmail      = Deno.env.get("RESEND_FROM_EMAIL") || "onboarding@resend.dev";
 
-    if (recruiterEmail) {
+    if (recruiterEmail && sendLeadEmail) {
       const typeLabel = types.length
         ? types.map((t: string) => (t === "empresa" ? "Empresa" : t === "candidato" ? "Candidato" : t)).join(" · ")
         : "—";
