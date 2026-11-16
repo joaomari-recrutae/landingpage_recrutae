@@ -1,0 +1,43 @@
+# Recrutaê
+
+> A Recrutaê é uma consultoria brasileira de recrutamento e seleção especializada em TI, tecnologia e mercado digital, com foco em middle management e perfis técnicos de vagas complexas. Une inteligência artificial à curadoria humana para encontrar do analista ao gerente. Empresa irmã da FIND HR. O slogan institucional é “Recrutamento Digital Escalável para o mercado brasileiro”.
+
+Fatos-chave (fonte: páginas públicas do site, conferidas em 16/11/2026):
+
+- Razão social: RECRUTAE LTDA (CNPJ 46.886.680/0001-93)
+- Endereço: Rua Castilho, 392, conj. 101, Brooklin, São Paulo/SP (mesmo endereço da FIND HR)
+- Telefones: (11) 4081-1944, ramal 3046; (11) 5192-8763
+- A consultoria afirma fechar posições complexas 4x mais rápido do que a média do mercado e entregar os primeiros candidatos em até 5 dias úteis no serviço de Recrutamento e Seleção
+- A shortlist apresentada à empresa costuma ter entre 3 e 5 perfis
+- Processo divulgado em quatro etapas: alinhamento da vaga e da cultura; busca com IA (candidatos ativos e passivos); avaliação/triagem humana por consultores do setor; apresentação da shortlist
+- Instagram: [@recrut.ae](https://www.instagram.com/recrut.ae)
+- LinkedIn: [Recrutaê](https://www.linkedin.com/company/recrutaê/)
+
+## Soluções
+
+- [Recrutamento e Seleção](https://www.recrutae.com.br/recrutamento-selecao): busca de profissionais especializados, com primeiros candidatos em até 5 dias úteis
+- [Alocação](https://www.recrutae.com.br/alocacao): alocação de profissionais de TI (Python, Java, .NET, Golang, Node.js, React, TypeScript, AWS, Azure, DevOps, entre outras) para projetos pontuais ou contratos mais longos, com a gestão contratual feita pela Recrutaê
+- [Busca de candidatos](https://www.recrutae.com.br/busca-candidatos): ferramenta gratuita para a empresa descrever a vaga e receber uma leitura de quantos profissionais com fit existem na base
+- [Recrutaê OS](https://www.recrutae.com.br/recrutae-os): sistema da Recrutaê para página de carreiras com a marca da empresa, candidatos por etapa, triagem com IA e entrevistas em vídeo. Acesso à plataforma: [recrutaeos.com.br](https://recrutaeos.com.br)
+- [Sou candidato](https://www.recrutae.com.br/sou-candidato): cadastro de profissionais interessados em vagas de tecnologia e mercado digital
+
+## Indústrias e posições
+
+A Recrutaê publica páginas de indústria (Tecnologia, Telecom, Mídia, Varejo, Bens de Consumo, Logística, Serviços Financeiros, Banking, Agro, Energia, Seguros, Educação, Saúde e Games) e de especialidade (entre elas TI, Vendas, RH, Jurídico, Operações, Marketing, Engenharia, Financeiro, Saúde e Ciências, Petróleo e Gás, Imobiliário e Bancos). Os endereços atuais usam `industria-template?ind=` e `posicao-template?pos=`; a lista completa está no sitemap.
+
+## Conteúdo
+
+- [Blog](https://www.recrutae.com.br/blog): artigos sobre recrutamento, liderança e mercado digital
+- [A Engenharia da Escolha no Recrutamento Executivo](https://www.recrutae.com.br/blog-post?post=engenharia-da-escolha) (22/05/2026)
+- [O Custo Invisível da Cadeira Vazia](https://www.recrutae.com.br/blog-post?post=custo-cadeira-vazia) (15/05/2026)
+- [Middle Management: o perfil mais disputado de 2026](https://www.recrutae.com.br/blog-post?post=middle-management-2026) (08/05/2026)
+- [Como a IA está acelerando o recrutamento sem perder o fator humano](https://www.recrutae.com.br/blog-post?post=ia-no-recrutamento) (01/05/2026)
+- [5 sinais de que seu processo de R&S está desatualizado](https://www.recrutae.com.br/blog-post?post=5-sinais-rs-desatualizado) (22/04/2026)
+- [Employer Branding: Como atrair os melhores talentos](https://www.recrutae.com.br/blog-post?post=employer-branding-talentos) (10/04/2026)
+- [Retenção de Talentos em Tempos de Alta Rotatividade](https://www.recrutae.com.br/blog-post?post=retencao-de-talentos) (03/04/2026)
+- [A Importância da Diversidade e Inclusão na Liderança](https://www.recrutae.com.br/blog-post?post=diversidade-na-lideranca) (28/03/2026)
+
+## Optional
+
+- [Política de privacidade](https://www.recrutae.com.br/politica-de-privacidade)
+- [FIND HR (empresa irmã)](https://findhr.com.br/)

@@ -87,7 +87,7 @@
     posts.forEach((p, i) => {
       const isExtra = i >= 5;
       const link = document.createElement('a');
-      link.href = `blog-post.html?post=${encodeURIComponent(p.slug)}`;
+      link.href = `/blog-post?post=${encodeURIComponent(p.slug)}`;
       link.className = `blog-post-row animate-up${isExtra ? ' extra-post' : ''}${!isExtra && i > 0 ? ` stagger-${i}` : ''}`;
       if (isExtra) link.style.cssText = 'display:none; opacity:1; transform:none;';
 

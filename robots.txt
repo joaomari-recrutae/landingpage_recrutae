@@ -1,0 +1,11 @@
+# Recrutaê — arquivo para a raiz do site canônico (www).
+# Colocar em public/ ou na raiz do projeto Vercel, para responder em
+# https://www.recrutae.com.br/robots.txt
+#
+# Não bloquear parâmetros ?post=, ?ind= e ?pos=: são as URLs reais
+# dos artigos, indústrias e posições.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.recrutae.com.br/sitemap.xml

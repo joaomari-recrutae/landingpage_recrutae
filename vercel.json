@@ -1,6 +1,21 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "templates/*.html"
+    }
+  },
+  "redirects": [
+    { "source": "/blog-post.html", "destination": "/blog-post", "permanent": true },
+    { "source": "/industria-template.html", "destination": "/industria-template", "permanent": true },
+    { "source": "/posicao-template.html", "destination": "/posicao-template", "permanent": true },
+    { "source": "/templates/:page", "destination": "/:page", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/admin-login", "destination": "/painel-recrutae-privado-v4.html" }
+    { "source": "/blog-post", "destination": "/api/blog-post" },
+    { "source": "/industria-template", "destination": "/api/industria-template" },
+    { "source": "/posicao-template", "destination": "/api/posicao-template" },
+    { "source": "/admin-login", "destination": "/painel-recrutae-privado-v4" }
   ]
 }

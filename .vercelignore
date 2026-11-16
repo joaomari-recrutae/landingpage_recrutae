@@ -1,0 +1,9 @@
+.env*
+.claude/
+docs/
+scripts/
+supabase/
+admin-recrutae/
+setup-*
+deploy.js
+test-integration.js

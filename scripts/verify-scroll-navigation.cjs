@@ -8,10 +8,14 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.route('**/*.supabase.co/**', route => route.fulfill({ status: 200, contentType: 'application/json', body: '[]' }));
-    const files = fs.readdirSync('.').filter(name => name.endsWith('.html') && !name.startsWith('painel-'));
+    const files = [...fs.readdirSync('.'), ...fs.readdirSync('templates')].filter(name => name.endsWith('.html') && !name.startsWith('painel-'));
     for (const file of files) {
-      await page.goto(`${base}/${file}`);
+      await page.goto(`${base}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}`);
       assert.equal(await page.evaluate(() => typeof window.recrutaeScrollToSection), 'function', file);
+      const legacyLinks = await page.evaluate(() => [...document.querySelectorAll('a[href]')]
+        .filter(link => link.origin === location.origin && link.pathname.endsWith('.html'))
+        .map(link => link.getAttribute('href')));
+      assert.deepEqual(legacyLinks, [], `Links rendered by the page, mobile menu and carousel must be clean: ${file}`);
       const target = await page.evaluate(() => {
         const links = [...document.querySelectorAll('a[href^="#"]')];
         return links.map(a => document.getElementById(a.hash.slice(1))).find(el => el && !el.hidden && el.getBoundingClientRect().top > 600)?.id;
@@ -32,7 +36,7 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
       await page.emulateMedia({ reducedMotion: 'no-preference' });
     }
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto(`${base}/recrutae-os.html`);
+    await page.goto(`${base}/recrutae-os`);
     assert.notEqual(await page.locator('.ros-button').first().evaluate(el => getComputedStyle(el).transitionDuration), '0s');
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.waitForTimeout(100);
@@ -47,24 +51,24 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
     assert.ok(intermediate > initial && intermediate < final, `Scroll animates over time: ${initial}, ${intermediate}, ${final}`);
     for (const width of [1440, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(`${base}/recrutae-os.html`);
+      await page.goto(`${base}/recrutae-os`);
       const back = page.getByRole('link', { name: 'Voltar à Recrutaê' });
       assert.ok(await back.isVisible());
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       if (width === 1440 || width === 390) await page.screenshot({ path: `${process.env.TEMP}/ros-header-${width}.png` });
       await back.click();
-      await page.waitForURL('**/index.html');
+      await page.waitForURL('**/');
     }
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(`${base}/alocacao.html`);
+    await page.goto(`${base}/alocacao`);
     await page.locator('.btn-cta-nav').click();
-    await page.waitForURL('**/index.html#contato');
+    await page.waitForURL('**/#contato');
     await page.waitForFunction(() => {
       const top = document.getElementById('contato').getBoundingClientRect().top;
       return top >= 70 && top < 160;
     });
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(`${base}/index.html`);
+    await page.goto(`${base}/`);
     assert.notEqual(await page.locator('.hero-blob-gold').evaluate(el => getComputedStyle(el).animationName), 'none');
     assert.notEqual(await page.locator('.nav-link-os').evaluate(el => getComputedStyle(el, '::before').transitionDuration), '0s');
     const reveal = page.locator('.animate-up:not(.in-view)').first();
