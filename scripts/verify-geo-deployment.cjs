@@ -21,7 +21,10 @@ const canonical = html => html.match(/<link rel="canonical" href="([^"]+)"/)[1].
   for (const name of ['robots.txt', 'sitemap.xml', 'llms.txt']) {
     const response = await request(`${base}/${name}`);
     assert.equal(response.status, 200, name);
-    assert.equal(await response.text(), fs.readFileSync(path.resolve(__dirname, '..', name), 'utf8'), `${name}: published content`);
+    // Git on Windows can use CRLF while Vercel's Linux checkout uses LF.
+    const published = (await response.text()).replaceAll('\r\n', '\n');
+    const supplied = fs.readFileSync(path.resolve(__dirname, '..', name), 'utf8').replaceAll('\r\n', '\n');
+    assert.equal(published, supplied, `${name}: published content`);
   }
   const urls = [...fs.readFileSync(path.resolve(__dirname, '../sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
   let checked = 0;
