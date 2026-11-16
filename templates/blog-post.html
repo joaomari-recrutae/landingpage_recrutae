@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Engenharia da Escolha no Recrutamento Executivo | Recrutaê Blog</title>
@@ -21,13 +24,10 @@
   <meta property="twitter:title" content="A Engenharia da Escolha no Recrutamento Executivo">
   <meta property="twitter:description" content="Descubra como o mercado de recrutamento mudou e por que processos ágeis são vitais na contratação de lideranças.">
   <meta property="twitter:image" content="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
-  <script src="scroll-navigation.js?v=2" defer></script>
+  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
+  <script src="/scroll-navigation.js?v=2" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -35,11 +35,11 @@
   <nav class="navbar transparent on-dark" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
-        <img src="assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
+        <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
+        <img src="/assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
+        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <ul class="dropdown">
@@ -86,7 +86,7 @@
           </ul>
         </li>
       </ul>
-      <a href="/#contato" class="btn-cta-nav">Agendar Reunião</a>
+      <a href="/#contato" class="btn-cta-nav">Falar com especialista</a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -153,7 +153,7 @@
       <div class="container" style="text-align:center">
         <span class="label label-light animate-up">Pronto para agir?</span>
         <h2 class="section-title animate-up" style="color:var(--white);max-width:560px;margin:16px auto 32px">Pronto para encontrar o <em>candidato ideal?</em></h2>
-        <a href="/#contato" class="btn btn-gold animate-up">Agendar reunião</a>
+        <a href="/#contato" class="btn btn-gold animate-up">Falar com especialista</a>
       </div>
     </section>
 
@@ -199,7 +199,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
+          <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
           <p class="footer-desc">Recrutamento Digital Escalável para o mercado brasileiro.</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/recrut.ae" target="_blank" rel="noopener" aria-label="Instagram">
@@ -226,57 +226,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-  <script src="blog-loader.js?v=1"></script>
-  <script src="blog-data.js"></script>
-  <script src="script.js?v=7"></script>
-  <script>
-    // Fallback estático: só renderiza se o blog-loader não encontrou o post no Supabase.
-    // Espera até 3s pelo loader terminar antes de tentar renderizar do blog-data.js
-    document.addEventListener('DOMContentLoaded', () => {
-      let tries = 0;
-      const maxTries = 30; // 30 * 100ms = 3s
+  <script src="/script.js?v=8"></script>
 
-      const trigger = () => {
-        tries++;
-        // Se o loader renderizou, aborta o fallback
-        if (window.__blogLoaderRendered) return;
-
-        // Se o loader ainda está pendente e temos tries disponíveis, espera mais
-        if (window.__blogLoaderPending && tries < maxTries) {
-          setTimeout(trigger, 100);
-          return;
-        }
-
-        // Caso contrário, faz o render do fallback estático
-        const params = new URLSearchParams(window.location.search);
-        const postId = params.get('post') || 'engenharia-da-escolha';
-        const post = blogData[postId];
-
-        if (post) {
-          document.title = `${post.title} | Recrutaê Blog`;
-          document.querySelector('meta[name="description"]')?.setAttribute('content', post.title);
-          document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
-          document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', post.title);
-
-          document.querySelector('.breadcrumb span:last-child').textContent = post.tag;
-          document.querySelector('.badge.badge-gold').textContent = post.tag;
-          document.querySelector('.page-hero-title').innerHTML = post.title.replace('Recrutamento Executivo', '<em>Recrutamento Executivo</em>');
-          document.querySelector('.article-meta').innerHTML = `${post.date} &nbsp;·&nbsp; ${post.readTime} &nbsp;·&nbsp; Equipe Recrutaê`;
-
-          document.querySelector('.article-hero-img').style.background = `url('${post.image}') center/cover no-repeat`;
-          document.querySelector('.article-body').innerHTML = post.content;
-
-          const tagsContainer = document.querySelector('.article-tags');
-          if (tagsContainer) {
-            tagsContainer.innerHTML = `<span class="chip">${post.tag}</span>` +
-              (postId === 'engenharia-da-escolha' ? '<span class="chip">Recrutamento</span><span class="chip">IA</span><span class="chip">Middle Management</span>' : '');
-          }
-        }
-      };
-
-      setTimeout(trigger, 100);
-    });
-  </script>
 </body>
 </html>

@@ -2,3 +2,6 @@
 .env
 .vercel
 .env*
+node_modules/
+test-results/
+.generated/

@@ -1,0 +1,16 @@
+{
+  "bancos-financeiros": "bancos",
+  "engenharia-manufatura": "engenharia",
+  "financeiro-tributario": "financeiro",
+  "imobiliario-construcao": "imobiliario",
+  "juridico-legal": "juridico",
+  "marketing-comunicacao": "marketing",
+  "operacoes-logistica": "operacoes",
+  "petroleo-gas": "petroleo",
+  "recursos-humanos": "rh",
+  "saude-ciencias": "saude-ciencias",
+  "seguros": "seguros-pos",
+  "tecnologia-informacao": "ti",
+  "varejo": "varejo-pos",
+  "vendas": "vendas"
+}

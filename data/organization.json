@@ -1,0 +1,19 @@
+{
+  "@type": "Organization",
+  "@id": "https://www.recrutae.com.br/#organization",
+  "name": "Recrutaê",
+  "legalName": "RECRUTAE LTDA",
+  "url": "https://www.recrutae.com.br/",
+  "logo": "https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png",
+  "taxID": "46.886.680/0001-93",
+  "email": "contato@recrutae.com.br",
+  "telephone": "+55-11-5192-8763",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Castilho, 392, conjunto 101, Brooklin",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "sameAs": ["https://www.instagram.com/recrut.ae", "https://www.linkedin.com/company/recruta%C3%AA/"]
+}

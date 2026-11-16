@@ -7,3 +7,7 @@ admin-recrutae/
 setup-*
 deploy.js
 test-integration.js
+node_modules/
+.impeccable/
+PRODUCT.md
+DESIGN.md

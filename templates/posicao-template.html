@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recrutamento por Cargo e Posição Especializada | Recrutaê</title>
@@ -21,13 +24,10 @@
   <meta property="twitter:title" content="Recrutamento por Cargo Especializado | Recrutaê">
   <meta property="twitter:description" content="Headhunters especializados por cargo e posição para o mercado corporativo e tech.">
   <meta property="twitter:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
-  <script src="scroll-navigation.js?v=2" defer></script>
+  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
+  <script src="/scroll-navigation.js?v=2" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -35,11 +35,11 @@
   <nav class="navbar transparent on-dark" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
-        <img src="assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
+        <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
+        <img src="/assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
+        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <ul class="dropdown">
@@ -86,7 +86,7 @@
           </ul>
         </li>
       </ul>
-      <a href="/#contato" class="btn-cta-nav">Agendar Reunião</a>
+      <a href="/#contato" class="btn-cta-nav">Falar com especialista</a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -231,18 +231,17 @@
                 </select>
               </div>
             </div>
-            <div class="form-checks">
-              <label class="form-check"><input type="checkbox" name="tipo" value="empresa" checked> Sou empresa</label>
-              <label class="form-check"><input type="checkbox" name="tipo" value="candidato"> Sou candidato</label>
-            </div>
+            <input type="hidden" name="tipo" value="empresa">
+            <p class="form-audience-note">Procurando uma oportunidade? <a href="/sou-candidato">Cadastre seu perfil de candidato</a>.</p>
             <p class="form-privacy-note">Saiba como usamos seus dados na <a href="/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+            <p class="form-next-step">Nossa equipe entra em contato para alinhar sua necessidade e explicar os próximos passos.</p>
             <button type="submit" class="btn btn-gold btn-full">
               <span>Enviar mensagem</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="form-success" id="formSuccess" style="display:none">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Mensagem enviada! Entraremos em contato em breve.
+              Solicitação recebida. Nossa equipe entrará em contato para conversar sobre sua necessidade.
             </div>
           </form>
         </div>
@@ -255,7 +254,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
+          <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
           <p class="footer-desc">Recrutamento Digital Escalável para o mercado brasileiro.</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/recrut.ae" target="_blank" rel="noopener" aria-label="Instagram">
@@ -282,142 +281,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
-  <script>
-    const POSITIONS = {
-      bancos: {
-        name: 'Bancos e Serviços Financeiros',
-        sub: 'Executivos que dominam o ecossistema financeiro brasileiro e suas transformações.',
-        roles: ['CEO de Banco Digital', 'Head de Corporate Banking', 'Gerente de Wealth Management', 'Head de Crédito PF/PJ', 'Gerente de Produtos Bancários', 'Head de Open Finance', 'Gerente de Compliance Financeiro', 'Analista Sênior de Risco de Crédito'],
-        profile: 'Profissionais com sólida formação em Economia, Administração ou Engenharia, com MBA e experiência em ambientes regulados. Dominam modelagem financeira, regulação BACEN e tendências de Open Finance.',
-      },
-      engenharia: {
-        name: 'Engenharia e Manufatura',
-        sub: 'Líderes técnicos que transformam processos produtivos e impulsionam eficiência industrial.',
-        roles: ['Diretor de Engenharia', 'Gerente de Manufatura', 'Head de Lean Manufacturing', 'Engenheiro Sênior de Processos', 'Gerente de Qualidade', 'Head de P&D', 'Coordenador de Manutenção', 'Engenheiro de Automação'],
-        profile: 'Engenheiros com experiência em chão de fábrica e capacidade de liderança estratégica. Familiaridade com metodologias Lean, Six Sigma e indústria 4.0 é diferencial.',
-      },
-      financeiro: {
-        name: 'Financeiro e Tributário',
-        sub: 'Gestores que garantem saúde financeira e compliance tributário em ambientes complexos.',
-        roles: ['CFO', 'Head de Controladoria', 'Gerente Financeiro', 'Head de Tributário', 'Especialista em FP&A', 'Gerente de Tesouraria', 'Head de Auditoria Interna', 'Analista Sênior Fiscal'],
-        profile: 'Contadores, Economistas ou Administradores com especialização em finanças corporativas. Experiência com IFRS, legislação tributária brasileira e gestão de fluxo de caixa em empresas de médio a grande porte.',
-      },
-      imobiliario: {
-        name: 'Imobiliário e Construção',
-        sub: 'Profissionais que lideram incorporação, construção e gestão de ativos imobiliários.',
-        roles: ['Diretor de Incorporação', 'Gerente de Obras', 'Head de Produto Imobiliário', 'Gerente Comercial de Lançamentos', 'Head de Asset Management', 'Gerente de Compras e Suprimentos', 'Coordenador Técnico de Projetos'],
-        profile: 'Engenheiros civis ou arquitetos com experiência em gestão de projetos de grande escala. Conhecimento do ciclo completo de incorporação: aquisição de terrenos, produto, lançamento e entrega.',
-      },
-      juridico: {
-        name: 'Jurídico e Legal',
-        sub: 'Juristas que navegam regulação complexa e criam valor estratégico para as organizações.',
-        roles: ['General Counsel', 'Head Jurídico', 'Gerente de Compliance', 'Advogado Sênior de M&A', 'Head de Propriedade Intelectual', 'Gerente de Contratos', 'Especialista em Direito Digital', 'Head de Regulatório'],
-        profile: 'Bacharéis em Direito com pós-graduação e atuação em escritórios de ponta ou jurídico interno de grandes corporações. Perfis que combinam rigor técnico com visão de negócio são os mais disputados.',
-      },
-      marketing: {
-        name: 'Marketing, Comunicação e Digital',
-        sub: 'Líderes que constroem marcas relevantes e crescimento sustentável no ambiente digital.',
-        roles: ['CMO', 'VP de Marketing', 'Head de Growth', 'Head de Performance', 'Gerente de Marketing Digital', 'Head de Brand', 'Diretor de Comunicação', 'Head de CRM', 'Gerente de Social Media', 'Head de Influencer Marketing'],
-        profile: 'Profissionais com formação em Marketing, Publicidade ou Comunicação, com forte domínio de canais digitais, dados e ferramentas de automação. Capacidade de balancear branding de longo prazo com ativações de performance.',
-      },
-      operacoes: {
-        name: 'Operações, Logística e Supply Chain',
-        sub: 'Gestores que otimizam cadeias complexas e garantem excelência operacional em escala.',
-        roles: ['COO', 'Head de Operações', 'Gerente de Supply Chain', 'Head de Logística', 'Gerente de Projetos', 'Especialista em Lean', 'Head de Procurement', 'Gerente de Planejamento de Demanda'],
-        profile: 'Engenheiros ou Administradores com MBA e experiência em operações de alta complexidade. Domínio de metodologias de otimização (Lean, Six Sigma) e familiaridade com ferramentas de planejamento (SAP, Oracle).',
-      },
-      petroleo: {
-        name: 'Petróleo e Gás',
-        sub: 'Especialistas técnicos e gestores para o setor de energia mais estratégico do país.',
-        roles: ['Engenheiro de Petróleo', 'Gerente de Exploração', 'Head de HSE', 'Gerente de Projetos Offshore', 'Especialista em Reservatórios', 'Head de Integridade de Dutos', 'Gerente de Contrato E&P'],
-        profile: 'Engenheiros de Petróleo, Mecânicos ou Químicos com experiência em operações upstream ou downstream. Certificações em segurança (NEBOSH, IOGP) são diferenciais competitivos.',
-      },
-      rh: {
-        name: 'Recursos Humanos',
-        sub: 'Líderes de pessoas que transformam cultura e impulsionam performance organizacional.',
-        roles: ['CHRO', 'Head de People', 'Gerente de R&S', 'Head de T&D', 'Gerente de Remuneração e Benefícios', 'Head de Cultura', 'Business Partner Sênior', 'Head de Diversidade e Inclusão'],
-        profile: 'Psicólogos, Administradores ou Pedagogos com experiência em gestão de pessoas em ambientes de alta performance. Perfis que combinam empatia com análise de dados de people analytics são os mais valorizados.',
-      },
-      'saude-ciencias': {
-        name: 'Saúde e Ciências',
-        sub: 'Profissionais que unem rigor científico com capacidade de inovação e gestão.',
-        roles: ['Médico Gestor', 'Head de HealthTech', 'Gerente de Operações Hospitalares', 'Especialista em Regulação ANVISA/ANS', 'Head de Produto Health', 'Diretor Médico', 'Gerente de Pesquisa Clínica', 'Head de Farmácia Hospitalar'],
-        profile: 'Médicos, Farmacêuticos ou Biomédicos com pós-graduação em gestão em saúde ou administração hospitalar. Capacidade de navegar regulação complexa (ANVISA, ANS) e liderar equipes multidisciplinares.',
-      },
-      'seguros-pos': {
-        name: 'Seguros',
-        sub: 'Especialistas que dominam atuária, produtos e distribuição no mercado segurador.',
-        roles: ['Atuário Sênior', 'Gerente de Produtos de Seguro', 'Head de Sinistros', 'Gerente Comercial de Seguros', 'Especialista em Regulação SUSEP', 'Head de Insurtech', 'Gerente de Corretagem', 'Head de Pricing'],
-        profile: 'Atuários, Economistas ou Administradores com especialização em mercado de seguros. Conhecimento profundo da regulação SUSEP e capacidade de estruturar produtos para nichos de mercado.',
-      },
-      ti: {
-        name: 'Tecnologia da Informação',
-        sub: 'Líderes técnicos que constroem times e produtos que escalam.',
-        roles: ['CTO', 'VP de Tecnologia', 'Head de Engenharia', 'Arquiteto de Soluções', 'Engineering Manager', 'Tech Lead', 'Head de Dados', 'Head de Segurança da Informação', 'Head de Infraestrutura', 'Head de Produto Digital'],
-        profile: 'Profissionais com formação em Ciência da Computação, Engenharia ou Sistemas de Informação. Perfis que combinam profundidade técnica com capacidade de comunicação com stakeholders de negócio são os mais disputados.',
-      },
-      'varejo-pos': {
-        name: 'Varejo',
-        sub: 'Executivos que lideram a transformação omnichannel do varejo brasileiro.',
-        roles: ['Head de E-commerce', 'Gerente de Operações Varejo', 'Diretor de Expansão', 'Head de Customer Experience', 'Gestor de Categoria', 'Head de Supply Chain Varejo', 'Gerente de Buyer', 'Head de Visual Merchandising'],
-        profile: 'Administradores ou Economistas com experiência em varejo de alta performance. Capacidade de integrar operações físicas e digitais, com domínio de dados de consumidor e gestão de categoria.',
-      },
-      vendas: {
-        name: 'Vendas',
-        sub: 'Líderes comerciais que constroem times e processos de vendas escaláveis.',
-        roles: ['VP de Vendas', 'Head of Sales', 'Gerente Comercial', 'Head de Inside Sales', 'Gerente de Key Accounts', 'Head de Sucesso do Cliente', 'Gerente de Parcerias', 'Head de Revenue Operations'],
-        profile: 'Profissionais com forte histórico de atingimento de metas e capacidade de construir times de alta performance. Perfis que dominam vendas complexas, CRM e metodologias de vendas consultivas (SPIN, MEDDIC) são muito demandados.',
-      },
-    };
+  <script src="/script.js?v=8"></script>
 
-    (function() {
-      // Alias map: long slug used in links → short key used in POSITIONS data
-      const ALIASES = {
-        'bancos-financeiros': 'bancos',
-        'engenharia-manufatura': 'engenharia',
-        'financeiro-tributario': 'financeiro',
-        'imobiliario-construcao': 'imobiliario',
-        'juridico-legal': 'juridico',
-        'marketing-comunicacao': 'marketing',
-        'operacoes-logistica': 'operacoes',
-        'petroleo-gas': 'petroleo',
-        'recursos-humanos': 'rh',
-        'saude-ciencias': 'saude-ciencias',
-        'seguros': 'seguros-pos',
-        'tecnologia-informacao': 'ti',
-        'varejo': 'varejo-pos',
-        'vendas': 'vendas',
-      };
-      const raw = new URLSearchParams(window.location.search).get('pos');
-      const key = ALIASES[raw] || raw;
-      const data = POSITIONS[key];
-
-      if (!data) {
-        document.getElementById('pos-title').textContent = 'Posição não encontrada';
-        document.getElementById('pos-sub').textContent = 'Verifique o endereço e tente novamente.';
-        return;
-      }
-
-      // Update page title
-      document.title = data.name + ' — Recrutaê';
-
-      // Breadcrumb
-      document.getElementById('pos-breadcrumb').textContent = data.name;
-
-      // Hero
-      document.getElementById('pos-title').textContent = data.name;
-      document.getElementById('pos-sub').textContent = data.sub;
-
-      // Roles
-      const rolesEl = document.getElementById('pos-roles');
-      data.roles.forEach(function(r) {
-        rolesEl.innerHTML += '<span class="chip">' + r + '</span>';
-      });
-
-      // Profile
-      document.getElementById('pos-profile').textContent = data.profile;
-    })();
-  </script>
 </body>
 </html>

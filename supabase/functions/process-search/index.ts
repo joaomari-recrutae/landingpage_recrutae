@@ -13,6 +13,7 @@
 
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.0";
+import { assertSearchWasSaved, candidateEstimate } from "./search-result.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -182,14 +183,8 @@ ${textAnswers.q7 || "(não respondido)"}
       jd = { titulo_vaga: textAnswers.q2 || "Posição em aberto" };
     }
 
-    // ── 3. Contagem real de candidatos (da análise da IA) ─────────────────
-    const candidateCount = typeof jd.candidatos_mapeados === "number" && jd.candidatos_mapeados > 0
-      ? jd.candidatos_mapeados
-      : (() => {
-          const sen = (jd.nivel_senioridade || "").toLowerCase();
-          const isExec = /diretor|head|vp|c-level|ceo|cfo|coo|cto/.test(sen);
-          return isExec ? 35 : 78;
-        })();
+    // A análise da IA é uma estimativa de mercado, não uma contagem da base.
+    const candidateCount = candidateEstimate(jd.candidatos_mapeados);
 
     // ── 4. Salvar no Supabase ─────────────────────────────────────────────
     const sb = createClient(
@@ -214,7 +209,7 @@ ${textAnswers.q7 || "(não respondido)"}
       .select("id")
       .single();
 
-    if (dbErr) console.warn("DB insert error:", dbErr);
+    assertSearchWasSaved(dbErr, rec);
 
     // ── 5. Enviar email via Resend ─────────────────────────────────────────
     let emailStatus = "not_sent";
@@ -246,8 +241,8 @@ ${textAnswers.q7 || "(não respondido)"}
     <table width="100%" cellpadding="0" cellspacing="0">
       <tr>
         <td style="text-align:center;padding:0 8px">
-          <p style="color:rgba(13,12,29,.5);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 4px">Candidatos mapeados</p>
-          <p style="color:#0D0C1D;font-size:38px;font-weight:800;margin:0;line-height:1">${candidateCount}</p>
+          <p style="color:rgba(13,12,29,.5);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 4px">Estimativa de mercado (IA)</p>
+          <p style="color:#0D0C1D;font-size:38px;font-weight:800;margin:0;line-height:1">${candidateCount === null ? 'A validar' : candidateCount}</p>
         </td>
         <td style="text-align:center;padding:0 8px;border-left:1px solid rgba(13,12,29,.15)">
           <p style="color:rgba(13,12,29,.5);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 4px">Senioridade</p>
@@ -382,7 +377,7 @@ ${textAnswers.q7 || "(não respondido)"}
 
     // ── 6. Responder ao frontend ───────────────────────────────────────────
     return new Response(
-      JSON.stringify({ success: true, candidateCount, jobTitle: jd.titulo_vaga, emailStatus }),
+      JSON.stringify({ success: true, id: rec?.id, candidateCount, candidateCountSource: "estimate", jobTitle: jd.titulo_vaga, emailStatus }),
       { headers: { ...CORS, "Content-Type": "application/json" } }
     );
 

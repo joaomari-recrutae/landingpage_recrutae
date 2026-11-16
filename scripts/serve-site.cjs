@@ -4,10 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const config = require('../vercel.json');
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
 
 function createSiteServer() {
-  return http.createServer((req, res) => {
+  return http.createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
       const rewrite = config.rewrites?.find(rule => rule.source === url.pathname);
@@ -17,7 +17,7 @@ function createSiteServer() {
       if (!path.extname(file)) file += '.html';
       if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
         if (rewrite?.destination.startsWith('/api/')) {
-          return require(path.join(root, `${rewrite.destination}.js`))(req, res);
+          return await require(path.join(root, `${rewrite.destination}.js`))(req, res);
         }
         if (rewrite) {
           const destination = path.join(root, `${rewrite.destination}.html`);
@@ -27,7 +27,7 @@ function createSiteServer() {
             return;
           }
         }
-        res.writeHead(404).end(); return;
+        return require('../lib/seo-template.cjs').notFound(res);
       }
       res.setHeader('Content-Type', types[path.extname(file)] || 'application/octet-stream');
       res.end(fs.readFileSync(file));

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Busca de Candidatos de TI Grátis | Recrutaê</title>
@@ -20,12 +23,8 @@
   <meta property="twitter:title" content="Plataforma de Busca de Candidatos Grátis | Recrutaê">
   <meta property="twitter:description" content="Simule sua vaga e deixe nossa IA encontrar os melhores candidatos do mercado.">
   <meta property="twitter:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
+  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
   <style>
     /* =========================================================
        BUSCA DE CANDIDATOS — PAGE + WIZARD STYLES
@@ -774,7 +773,9 @@
       .res-cta-box { padding: 22px 18px; }
     }
   </style>
-  <script src="scroll-navigation.js?v=2" defer></script>
+  <script src="/scroll-navigation.js?v=2" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script type="application/ld+json" id="recrutae-structured-data">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.recrutae.com.br/busca-candidatos#webpage","url":"https://www.recrutae.com.br/busca-candidatos","name":"Plataforma de Busca de Candidatos de TI Grátis | Recrutaê","description":"Mapeie o mercado e descubra candidatos ideais para suas vagas de TI e tecnologia. Nossa IA encontra os melhores perfis para você. 100% gratuito.","inLanguage":"pt-BR","isPartOf":{"@id":"https://www.recrutae.com.br/#website"},"about":{"@id":"https://www.recrutae.com.br/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.recrutae.com.br/"},{"@type":"ListItem","position":2,"name":"Plataforma de Busca de Candidatos de TI Grátis","item":"https://www.recrutae.com.br/busca-candidatos"}]}]}</script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -783,11 +784,11 @@
   <nav class="navbar transparent on-dark" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
-        <img src="assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
+        <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
+        <img src="/assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
+        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <ul class="dropdown">
@@ -824,7 +825,7 @@
       <div class="busca-hero-inner container">
 
         <h1 class="busca-title">
-          Quantos candidatos qualificados<br>existem para <em>a sua vaga?</em>
+          Descreva a vaga.<br>Nossa equipe ajuda a encontrar <em>o perfil certo.</em>
         </h1>
         <p class="busca-sub">
           Conte sobre a posição em 5 minutos. Nossa equipe mapeia os perfis mais compatíveis da nossa base e entra em contato em até 24 horas.
@@ -893,10 +894,10 @@
   <!-- ====================================================
        WIZARD OVERLAY
   ===================================================== -->
-  <div id="wizardOverlay" class="wizard-overlay">
+  <div id="wizardOverlay" class="wizard-overlay" role="dialog" aria-modal="true" aria-label="Descreva sua vaga" aria-hidden="true" inert>
 
     <div class="wiz-top">
-      <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="wiz-logo">
+      <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="wiz-logo">
       <div class="wiz-progress-center" id="wizProgCenter">
         <div class="wiz-dots" id="wizDots"></div>
         <span class="wiz-step-lbl" id="wizLbl">Passo 1 de 8</span>
@@ -959,13 +960,20 @@
 
       <!-- STEP: processing -->
       <div class="wiz-step" id="step-processing">
-        <div class="proc-wrap">
+        <div class="proc-wrap" role="status" aria-live="polite">
           <div class="proc-spinner"></div>
-          <h2 class="proc-title">Analisando seu perfil</h2>
-          <p class="proc-msg" id="procMsg">Processando suas respostas com IA...</p>
+          <h2 class="proc-title">Analisando a sua vaga</h2>
+          <p class="proc-msg" id="procMsg">Estamos organizando suas respostas. Você pode sair a qualquer momento.</p>
         </div>
       </div>
 
+      <div class="wiz-step" id="step-error">
+        <div class="proc-wrap" role="alert">
+          <h2 class="proc-title">A busca não terminou desta vez.</h2>
+          <p class="step-hint" id="searchErrorText">Suas respostas continuam preenchidas nesta aba. Você pode tentar novamente ou revisá-las.</p>
+          <div class="wiz-actions"><button type="button" class="btn-wiz-back" id="reviewSearch">Revisar respostas</button><button type="button" class="btn-wiz-next" id="retrySearch">Tentar novamente</button></div>
+        </div>
+      </div>
       <!-- STEP: results -->
       <div class="wiz-step" id="step-results">
         <div class="res-wrap">
@@ -999,7 +1007,7 @@
     </div><!-- /wiz-body -->
   </div><!-- /wizard-overlay -->
 
-  <script src="script.js?v=7"></script>
+  <script src="/script.js?v=8"></script>
   <script>
     /* ============================================================
        ENTREVISTA ASSÍNCRONA — cada pergunta pode ser respondida
@@ -1067,6 +1075,7 @@
       answers: {},            // answers[id] = { mode, text, audioBlob, mimeType, recorded }
       stream:  null,          // único stream de câmera ativo por vez
       activeRec: null,
+      request: null,
     };
     QUESTIONS.forEach(q => { S.answers[q.id] = { mode: q.defaultMode, text: '', audioBlob: null, mimeType: 'audio/webm', recorded: false }; });
 
@@ -1302,17 +1311,33 @@
     /* ---- Open / close ---- */
     startBtn.addEventListener('click', () => {
       overlay.classList.add('active');
+      overlay.inert = false;
+      overlay.setAttribute('aria-hidden', 'false');
+      window.recrutaeAnalytics?.track('wizard_start');
       document.body.style.overflow = 'hidden';
       buildDots();
       show('step-contact');
     });
     closeBtn.addEventListener('click', closeWiz);
     function closeWiz() {
-      if (S.step === 'step-processing') return;
+      const pending = S.request; S.request = null; pending?.abort();
       overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.inert = true;
       document.body.style.overflow = '';
       stopActiveStream();
+      startBtn.focus();
     }
+    document.addEventListener('keydown', event => {
+      if (!overlay.classList.contains('active')) return;
+      if (event.key === 'Escape') closeWiz();
+      if (event.key === 'Tab') {
+        const focusable = [...overlay.querySelectorAll('button, input, textarea, a[href]')].filter(element => element.offsetParent !== null && !element.disabled);
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    });
 
     /* ---- Show step ---- */
     function show(id) {
@@ -1326,7 +1351,9 @@
       updateDots();
       const hide = ['step-processing','step-results'].includes(id);
       progCtr.style.visibility = hide ? 'hidden' : 'visible';
-      closeBtn.style.visibility = id === 'step-processing' ? 'hidden' : 'visible';
+      closeBtn.style.visibility = 'visible';
+      const heading = el.querySelector('h2');
+      if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
     }
 
     /* ---- Contact step ---- */
@@ -1355,79 +1382,68 @@
     }
 
     /* ---- Submit ---- */
-    function blobToDataURL(blob) {
-      return new Promise((res, rej) => {
-        const r = new FileReader();
-        r.onload = () => res(r.result);
-        r.onerror = rej;
-        r.readAsDataURL(blob);
+    function blobToDataURL(blob, signal) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        const cleanup = () => { clearTimeout(timer); signal.removeEventListener('abort', abort); };
+        const abort = () => { reader.abort(); cleanup(); reject(new DOMException('Upload interrompido', 'AbortError')); };
+        const timer = setTimeout(abort, 15000);
+        reader.onload = () => { cleanup(); resolve(reader.result); };
+        reader.onerror = () => { cleanup(); reject(Error('Não foi possível ler a gravação.')); };
+        signal.addEventListener('abort', abort, { once: true });
+        if (signal.aborted) return abort();
+        reader.readAsDataURL(blob);
       });
     }
 
+    document.getElementById('retrySearch').addEventListener('click', handleSubmit);
+    document.getElementById('reviewSearch').addEventListener('click', () => show('step-q7'));
     async function handleSubmit() {
+      if (S.request) return;
+      const controller = new AbortController();
+      S.request = controller;
+      const timeout = setTimeout(() => controller.abort(), 60000);
       show('step-processing');
-      const msgs = [
-        'Processando suas respostas...',
-        'Transcrevendo os vídeos com IA...',
-        'Analisando o perfil da posição...',
-        'Mapeando candidatos na nossa base...',
-        'Montando o job description...',
-        'Quase pronto...',
-      ];
-      let mi = 0;
-      const msgEl = document.getElementById('procMsg');
-      const msgInt = setInterval(() => {
-        mi = (mi + 1) % msgs.length;
-        msgEl.style.opacity = '0';
-        setTimeout(() => { msgEl.textContent = msgs[mi]; msgEl.style.opacity = '1'; }, 320);
-      }, 2400);
-
+      window.recrutaeAnalytics?.track('wizard_submit');
       const contact = {
-        name:    document.getElementById('cName').value.trim(),
-        role:    document.getElementById('cRole').value.trim(),
-        company: document.getElementById('cCompany').value.trim(),
-        email:   document.getElementById('cEmail').value.trim(),
-        phone:   document.getElementById('cPhone').value.trim(),
+        name: document.getElementById('cName').value.trim(), role: document.getElementById('cRole').value.trim(),
+        company: document.getElementById('cCompany').value.trim(), email: document.getElementById('cEmail').value.trim(), phone: document.getElementById('cPhone').value.trim(),
       };
-
-      // Monta o payload por pergunta (vídeo OU texto)
-      const answers = {};
-      for (const def of QUESTIONS) {
-        const A = S.answers[def.id];
-        if (A.mode === 'video' && A.audioBlob) {
-          answers[def.id] = {
-            mode: 'video',
-            audioBase64: await blobToDataURL(A.audioBlob),
-            audioMimeType: A.mimeType,
-          };
-        } else {
-          answers[def.id] = { mode: 'text', text: (A.text || '').trim() };
-        }
-      }
-
       try {
-        const resp = await fetch(EDGE_FUNCTION_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contact, answers }),
-        });
-        clearInterval(msgInt);
-        const data = resp.ok ? await resp.json() : { success: false };
-        showResults(data.candidateCount || 72, data.jobTitle, contact);
-      } catch (e) {
-        clearInterval(msgInt);
-        console.error(e);
-        showResults(72, null, contact);
-      }
+        const answers = {};
+        for (const def of QUESTIONS) {
+          const answer = S.answers[def.id];
+          answers[def.id] = answer.mode === 'video' && answer.audioBlob
+            ? { mode: 'video', audioBase64: await blobToDataURL(answer.audioBlob, controller.signal), audioMimeType: answer.mimeType }
+            : { mode: 'text', text: (answer.text || '').trim() };
+        }
+        const response = await fetch(EDGE_FUNCTION_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contact, answers }), signal: controller.signal });
+        if (!response.ok) throw Error('Não foi possível concluir o envio.');
+        const data = await response.json();
+        if (data.success !== true) throw Error('O envio não foi confirmado.');
+        if (!overlay.classList.contains('active')) return;
+        window.recrutaeAnalytics?.track('wizard_complete');
+        window.recrutaeAnalytics?.contact('company', 'candidate-search');
+        const verified = data.candidateCountSource === 'database' && Number.isInteger(data.candidateCount) && data.candidateCount >= 0;
+        showResults(verified ? data.candidateCount : null, data.jobTitle, contact);
+      } catch (error) {
+        if (S.request === controller && overlay.classList.contains('active')) {
+          window.recrutaeAnalytics?.track('wizard_error', { reason: error.name === 'AbortError' ? 'timeout' : 'request_failed' });
+          show('step-error');
+        }
+      } finally { clearTimeout(timeout); if (S.request === controller) S.request = null; }
     }
 
     /* ---- Results ---- */
     function showResults(count, jobTitle, contact) {
       show('step-results');
       const title = jobTitle || 'sua posição';
-      document.getElementById('resHeadline').textContent = `compatíveis com a vaga de ${title}`;
+      document.querySelector('.res-count-row').hidden = count === null;
+      document.querySelector('.res-pre').textContent = count === null ? 'Briefing recebido' : 'Perfis encontrados na base';
+      document.querySelector('.res-cta-title').textContent = 'Vamos conversar sobre sua contratação?';
+      document.getElementById('resHeadline').textContent = count === null ? `Vamos avaliar os perfis para ${title}` : `compatíveis com a vaga de ${title}`;
       document.getElementById('resJobTag').textContent   = jobTitle || 'Posição mapeada com sucesso';
-      animCount(count);
+      if (count !== null) animCount(count);
 
       const msg = encodeURIComponent(
         `Olá! Acabei de usar a busca de candidatos da Recrutaê.\n\nEmpresa: ${contact.company}\nPosição: ${jobTitle || '—'}\nNome: ${contact.name}\nEmail: ${contact.email}`
@@ -1437,6 +1453,7 @@
 
     function animCount(target) {
       const el = document.getElementById('resCount');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = target; return; }
       const t0 = performance.now();
       const dur = 1700;
       function frame(now) {

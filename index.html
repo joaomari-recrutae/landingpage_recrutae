@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="-tZOnK0CLFIgdvsw2KuDysymVH8vgIP2WJGWqDQc2f8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +17,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.recrutae.com.br/">
   <meta property="og:title" content="Consultoria de Recrutamento e Seleção | Recrutaê">
-  <meta property="og:description" content="Feche posições complexas 4x mais rápido com a melhor consultoria de recrutamento digital e tecnologia.">
+  <meta property="og:description" content="Encontre profissionais de TI e mercado digital com busca ativa, apoio de IA e avaliação humana.">
   <meta property="og:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.recrutae.com.br/">
   <meta property="twitter:title" content="Consultoria de Recrutamento e Seleção | Recrutaê">
-  <meta property="twitter:description" content="Feche posições complexas 4x mais rápido com a melhor consultoria de recrutamento digital e tecnologia.">
+  <meta property="twitter:description" content="Encontre profissionais de TI e mercado digital com busca ativa, apoio de IA e avaliação humana.">
   <meta property="twitter:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
-  <script src="scroll-navigation.js?v=2" defer></script>
+  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
+  <script src="/scroll-navigation.js?v=2" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script type="application/ld+json" id="recrutae-structured-data">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.recrutae.com.br/#organization","name":"Recrutaê","legalName":"RECRUTAE LTDA","url":"https://www.recrutae.com.br/","logo":"https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png","taxID":"46.886.680/0001-93","email":"contato@recrutae.com.br","telephone":"+55-11-5192-8763","address":{"@type":"PostalAddress","streetAddress":"Rua Castilho, 392, conjunto 101, Brooklin","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/recrut.ae","https://www.linkedin.com/company/recruta%C3%AA/"]},{"@type":"WebSite","@id":"https://www.recrutae.com.br/#website","url":"https://www.recrutae.com.br/","name":"Recrutaê","publisher":{"@id":"https://www.recrutae.com.br/#organization"},"inLanguage":"pt-BR"},{"@type":"WebPage","@id":"https://www.recrutae.com.br/#webpage","url":"https://www.recrutae.com.br/","name":"Consultoria de Recrutamento e Seleção de TI e Digital | Recrutaê","description":"A Recrutaê é a consultoria de recrutamento e seleção especializada em TI, tecnologia e mercado digital. Headhunters para middle management e vagas complexas.","inLanguage":"pt-BR","isPartOf":{"@id":"https://www.recrutae.com.br/#website"},"about":{"@id":"https://www.recrutae.com.br/#organization"}}]}</script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -38,12 +39,12 @@
   <nav class="navbar transparent on-dark" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
-        <img src="assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
+        <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
+        <img src="/assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
       </a>
 
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
+        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa
             <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -103,7 +104,7 @@
         </li>
       </ul>
 
-      <a href="#contato" class="btn-cta-nav">Agendar Reunião</a>
+      <a href="#contato" class="btn-cta-nav">Falar com especialista</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -155,7 +156,7 @@
     <section class="os-spotlight" id="recrutae-os" aria-labelledby="os-spotlight-title">
       <div class="container os-spotlight-grid">
         <div class="os-spotlight-copy">
-          <img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="2391" height="567" loading="lazy">
+          <img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="2391" height="567" loading="lazy">
           <h2 id="os-spotlight-title">Sua marca na página.<br>Seu time no controle.</h2>
           <p>Conheça o sistema da Recrutaê: página de carreiras, candidatos por etapa, triagem com IA e entrevistas em vídeo. Tudo conectado à sua próxima contratação.</p>
           <a href="/recrutae-os" class="os-spotlight-button">Conhecer o Recrutaê OS <span aria-hidden="true">↗</span></a>
@@ -177,8 +178,8 @@
       <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center" class="freemium-grid">
           <div class="animate-up">
-            <h2 class="section-title" style="max-width:440px">Quantos candidatos existem para <em>a sua vaga?</em></h2>
-            <p class="section-sub" style="margin-bottom:32px">Quer saber quantos profissionais ideais existem para a sua vaga? Em menos de 5 minutos você descobre — sem custo, sem compromisso.</p>
+            <h2 class="section-title" style="max-width:440px">Descreva sua vaga. <em>A gente ajuda na busca.</em></h2>
+            <p class="section-sub" style="margin-bottom:32px">Conte sobre o perfil que você precisa em cerca de 5 minutos. Nossa equipe recebe o briefing e conversa com você sobre a busca — sem custo, sem compromisso.</p>
             <a href="/busca-candidatos" class="btn btn-gold" style="font-size:15px;padding:16px 36px">
               Descubra gratuitamente
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px"><path d="M3 8h10M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -196,14 +197,14 @@
               <span style="font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0">02</span>
               <div>
                 <p style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px">A plataforma analisa</p>
-                <p style="font-size:13px;color:rgba(245,240,232,.45);line-height:1.55;margin:0">Cruzamos o perfil da vaga com nossa base e identificamos quem tem fit real.</p>
+                <p style="font-size:13px;color:rgba(245,240,232,.45);line-height:1.55;margin:0">Organizamos o perfil da vaga para orientar o mapeamento e a avaliação dos profissionais.</p>
               </div>
             </div>
             <div style="background:var(--navy);padding:24px 28px;display:flex;align-items:flex-start;gap:16px;border-radius:16px">
               <span style="font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0">03</span>
               <div>
                 <p style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px">Receba os perfis</p>
-                <p style="font-size:13px;color:rgba(245,240,232,.45);line-height:1.55;margin:0">Um consultor entra em contato com os candidatos selecionados para a sua vaga.</p>
+                <p style="font-size:13px;color:rgba(245,240,232,.45);line-height:1.55;margin:0">Um consultor recebe seu briefing e conversa com você sobre os próximos passos da busca.</p>
               </div>
             </div>
           </div>
@@ -219,40 +220,41 @@
     <!-- ===== CLIENTS MARQUEE ===== -->
     <section class="clients" id="clientes">
       <div class="clients-header animate-up">
-        <p class="clients-headline">Nossos clientes</p>
+        <p class="clients-headline">Empresas que já confiaram na Recrutaê</p>
+        <p class="clients-context">Clientes da consultoria de recrutamento e seleção.</p>
       </div>
       <div class="marquee-wrapper">
         <div class="marquee-track" id="marqueeTrack">
           <!-- set 1 -->
-          <div class="logo-item" title="Itaú"><img src="assets/empresas/itau.png" alt="Itaú" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Adyen"><img src="assets/empresas/adyen.png" alt="Adyen" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="IBM"><img src="assets/empresas/ibm.png" alt="IBM" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Sodexo"><img src="assets/empresas/sodexo.svg" alt="Sodexo" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Sicoob"><img src="assets/empresas/sicoob.png" alt="Sicoob" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Swile"><img src="assets/empresas/swile.png" alt="Swile" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Cosan"><img src="assets/empresas/cosan.png" alt="Cosan" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Digibee"><img src="assets/empresas/digibee.png" alt="Digibee" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="WestRock"><img src="assets/empresas/westrock.png" alt="WestRock" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Decathlon"><img src="assets/empresas/decatthlon.png" alt="Decathlon" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Saúde ID"><img src="assets/empresas/saudeid.png" alt="Saúde ID" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Eve"><img src="assets/empresas/eve.png" alt="Eve" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Santa Maria"><img src="assets/empresas/santamaria.webp" alt="Santa Maria" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Coritiba"><img src="assets/empresas/coritiba.png" alt="Coritiba" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Itaú"><img src="/assets/empresas/itau.png" alt="Itaú" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Adyen"><img src="/assets/empresas/adyen.png" alt="Adyen" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="IBM"><img src="/assets/empresas/ibm.png" alt="IBM" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Sodexo"><img src="/assets/empresas/sodexo.svg" alt="Sodexo" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Sicoob"><img src="/assets/empresas/sicoob.png" alt="Sicoob" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Swile"><img src="/assets/empresas/swile.png" alt="Swile" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Cosan"><img src="/assets/empresas/cosan.png" alt="Cosan" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Digibee"><img src="/assets/empresas/digibee.png" alt="Digibee" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="WestRock"><img src="/assets/empresas/westrock.png" alt="WestRock" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Decathlon"><img src="/assets/empresas/decatthlon.png" alt="Decathlon" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Saúde ID"><img src="/assets/empresas/saudeid.png" alt="Saúde ID" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Eve"><img src="/assets/empresas/eve.png" alt="Eve" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Santa Maria"><img src="/assets/empresas/santamaria.webp" alt="Santa Maria" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Coritiba"><img src="/assets/empresas/coritiba.png" alt="Coritiba" class="logo-img" loading="lazy"></div>
           <!-- set 2 — duplicate for seamless loop -->
-          <div class="logo-item" title="Itaú"><img src="assets/empresas/itau.png" alt="Itaú" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Adyen"><img src="assets/empresas/adyen.png" alt="Adyen" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="IBM"><img src="assets/empresas/ibm.png" alt="IBM" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Sodexo"><img src="assets/empresas/sodexo.svg" alt="Sodexo" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Sicoob"><img src="assets/empresas/sicoob.png" alt="Sicoob" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Swile"><img src="assets/empresas/swile.png" alt="Swile" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Cosan"><img src="assets/empresas/cosan.png" alt="Cosan" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Digibee"><img src="assets/empresas/digibee.png" alt="Digibee" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="WestRock"><img src="assets/empresas/westrock.png" alt="WestRock" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Decathlon"><img src="assets/empresas/decatthlon.png" alt="Decathlon" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Saúde ID"><img src="assets/empresas/saudeid.png" alt="Saúde ID" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Eve"><img src="assets/empresas/eve.png" alt="Eve" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Santa Maria"><img src="assets/empresas/santamaria.webp" alt="Santa Maria" class="logo-img" loading="lazy"></div>
-          <div class="logo-item" title="Coritiba"><img src="assets/empresas/coritiba.png" alt="Coritiba" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Itaú"><img src="/assets/empresas/itau.png" alt="Itaú" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Adyen"><img src="/assets/empresas/adyen.png" alt="Adyen" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="IBM"><img src="/assets/empresas/ibm.png" alt="IBM" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Sodexo"><img src="/assets/empresas/sodexo.svg" alt="Sodexo" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Sicoob"><img src="/assets/empresas/sicoob.png" alt="Sicoob" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Swile"><img src="/assets/empresas/swile.png" alt="Swile" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Cosan"><img src="/assets/empresas/cosan.png" alt="Cosan" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Digibee"><img src="/assets/empresas/digibee.png" alt="Digibee" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="WestRock"><img src="/assets/empresas/westrock.png" alt="WestRock" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Decathlon"><img src="/assets/empresas/decatthlon.png" alt="Decathlon" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Saúde ID"><img src="/assets/empresas/saudeid.png" alt="Saúde ID" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Eve"><img src="/assets/empresas/eve.png" alt="Eve" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Santa Maria"><img src="/assets/empresas/santamaria.webp" alt="Santa Maria" class="logo-img" loading="lazy"></div>
+          <div class="logo-item" title="Coritiba"><img src="/assets/empresas/coritiba.png" alt="Coritiba" class="logo-img" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -323,33 +325,16 @@
     </section>
 
     <!-- ===== METRICS — GOLD BG ===== -->
-    <section class="metrics" id="resultados">
+    <section class="metrics" id="resultados" aria-labelledby="delivery-title">
       <div class="container">
         <div class="metrics-header animate-up">
-          <h2 class="section-title">Números que você <em>sente na prática.</em></h2>
+          <h2 class="section-title" id="delivery-title">O que chega <em>à sua mesa.</em></h2>
+          <p class="section-sub">Busca ativa com IA, avaliação humana e informações para você decidir.</p>
         </div>
         <div class="metrics-grid">
-          <div class="metric-item animate-up">
-            <div class="metric-number">
-              <span class="counter" data-target="4">0</span><span class="suffix">x</span>
-            </div>
-            <p class="metric-label">Mais rápido</p>
-            <p class="metric-desc">no fechamento de vagas comparado à média do mercado</p>
-          </div>
-          <div class="metric-item animate-up stagger-1">
-            <div class="metric-number">
-              <span class="counter" data-target="2">0</span><span class="suffix">x</span>
-            </div>
-            <p class="metric-label">Mais inteligente</p>
-            <p class="metric-desc">na qualificação de candidatos para posições digitais</p>
-          </div>
-          <div class="metric-item animate-up stagger-2">
-            <div class="metric-number">
-              <span class="counter" data-target="10">0</span><span class="suffix">x</span>
-            </div>
-            <p class="metric-label">Melhor</p>
-            <p class="metric-desc">na primeira semana de projeto em relação a outras consultorias</p>
-          </div>
+          <div class="metric-item animate-up"><div class="metric-number">5 <span class="suffix">dias úteis</span></div><p class="metric-label">Primeira shortlist</p><p class="metric-desc">Prazo anunciado para Recrutamento e Seleção, com o escopo alinhado com a equipe.</p></div>
+          <div class="metric-item animate-up"><div class="metric-number">3–5 <span class="suffix">perfis</span></div><p class="metric-label">Seleção com contexto</p><p class="metric-desc">Profissionais selecionados e documentados para apoiar sua avaliação e as entrevistas.</p></div>
+          <div class="metric-item animate-up"><div class="metric-number">4 <span class="suffix">etapas</span></div><p class="metric-label">Um processo acompanhado</p><p class="metric-desc">Alinhamento, busca, avaliação humana e apresentação dos candidatos.</p></div>
         </div>
       </div>
     </section>
@@ -400,8 +385,8 @@
     <section class="testimonials" id="depoimentos">
       <div class="container">
         <div class="testimonials-header animate-up">
-          <span class="label">Depoimentos</span>
-          <h2 class="section-title">O que pensam os <em>talentos & clientes</em></h2>
+          <span class="label">Relatos de candidatos</span>
+          <h2 class="section-title">Experiências de quem <em>participou.</em></h2>
         </div>
         <div class="testi-carousel animate-up">
           <div class="testi-track">
@@ -561,6 +546,7 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
+<section class="commercial-faq" id="duvidas" aria-labelledby="commercial-faq-title"><div class="container"><div class="faq-intro"><h2 class="section-title" id="commercial-faq-title">Antes da próxima <em>contratação.</em></h2><p class="section-sub">Respostas para quem está escolhendo um parceiro de recrutamento.</p><a href="#contato" class="faq-contact">Conversar sobre a minha vaga <span aria-hidden="true">↗</span></a></div><div class="commercial-faq-list"><details><summary>Como funciona o recrutamento?<span aria-hidden="true">+</span></summary><p>Alinhamos a vaga e a cultura da empresa, buscamos profissionais com apoio de IA, realizamos a avaliação humana e apresentamos uma shortlist para as entrevistas.</p></details><details><summary>Em quanto tempo recebo a shortlist?<span aria-hidden="true">+</span></summary><p>No serviço de Recrutamento e Seleção, o prazo anunciado é de até 5 dias úteis para a primeira shortlist de candidatos qualificados. O escopo e o cronograma são alinhados com a equipe antes de iniciar a busca.</p></details><details><summary>Quais perfis a Recrutaê recruta?<span aria-hidden="true">+</span></summary><p>Atuamos com middle management e perfis técnicos do mercado digital, do analista ao gerente. As especialidades incluem TI, Vendas, Marketing, RH, Financeiro e Operações.</p></details><details><summary>O que recebo na shortlist?<span aria-hidden="true">+</span></summary><p>Você recebe uma seleção de 3 a 5 perfis, com informações documentadas para apoiar sua avaliação e a escolha de quem entrevistar.</p></details><details><summary>Qual é o papel da IA no processo?<span aria-hidden="true">+</span></summary><p>A IA apoia o mapeamento de candidatos ativos e passivos. Consultores especializados realizam a triagem e avaliam os aspectos técnicos e culturais de cada perfil.</p></details><details><summary>Como conheço os valores e as condições?<span aria-hidden="true">+</span></summary><p>Converse com a equipe sobre a vaga e o serviço desejado para conhecer o escopo e as condições de contratação. A ferramenta de busca inicial de candidatos disponível no site é gratuita.</p></details><details><summary>O que acontece depois que peço contato?<span aria-hidden="true">+</span></summary><p>Nossa equipe recebe sua solicitação e entra em contato para entender o perfil da vaga, conversar sobre o serviço e explicar os próximos passos. O envio do formulário não agenda uma reunião automaticamente.</p></details><details><summary>Sou candidato. Onde cadastro meu perfil?<span aria-hidden="true">+</span></summary><p>Use a página Sou candidato para registrar seu interesse em oportunidades. O formulário comercial desta página é voltado a empresas que querem contratar.</p></details></div></div></section>
     <section class="contact" id="contato">
       <div class="container">
         <div class="contact-header animate-up">
@@ -630,18 +616,17 @@
                 </select>
               </div>
             </div>
-            <div class="form-checks">
-              <label class="form-check"><input type="checkbox" name="tipo" value="empresa"> Sou empresa</label>
-              <label class="form-check"><input type="checkbox" name="tipo" value="candidato"> Sou candidato</label>
-            </div>
+            <input type="hidden" name="tipo" value="empresa">
+            <p class="form-audience-note">Procurando uma oportunidade? <a href="/sou-candidato">Cadastre seu perfil de candidato</a>.</p>
             <p class="form-privacy-note">Saiba como usamos seus dados na <a href="/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+            <p class="form-next-step">Nossa equipe entra em contato para alinhar sua necessidade e explicar os próximos passos.</p>
             <button type="submit" class="btn btn-gold btn-full">
-              <span id="btnText">Enviar mensagem</span>
+              <span id="btnText">Solicitar contato</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="form-success" id="formSuccess">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Mensagem enviada! Entraremos em contato em breve.
+              Solicitação recebida. Nossa equipe entrará em contato para conversar sobre sua necessidade.
             </div>
           </form>
         </div>
@@ -655,7 +640,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
+          <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
           <p class="footer-desc">Recrutamento Digital Escalável para o mercado brasileiro.</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/recrut.ae" target="_blank" rel="noopener" aria-label="Instagram">
@@ -706,6 +691,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="/script.js?v=8"></script>
 </body>
 </html>

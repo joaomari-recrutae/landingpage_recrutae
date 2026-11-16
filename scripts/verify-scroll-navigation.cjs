@@ -8,9 +8,10 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.route('**/*.supabase.co/**', route => route.fulfill({ status: 200, contentType: 'application/json', body: '[]' }));
-    const files = [...fs.readdirSync('.'), ...fs.readdirSync('templates')].filter(name => name.endsWith('.html') && !name.startsWith('painel-'));
+    const files = [...fs.readdirSync('.'), ...fs.readdirSync('templates')].filter(name => name.endsWith('.html') && !name.startsWith('painel-') && name !== '404.html');
     for (const file of files) {
-      await page.goto(`${base}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}`);
+      const route = file === 'index.html' ? '' : file === 'industria-template.html' ? 'industria-template?ind=tecnologia' : file === 'posicao-template.html' ? 'posicao-template?pos=vendas' : file.replace(/\.html$/, '');
+      await page.goto(`${base}/${route}`);
       assert.equal(await page.evaluate(() => typeof window.recrutaeScrollToSection), 'function', file);
       const legacyLinks = await page.evaluate(() => [...document.querySelectorAll('a[href]')]
         .filter(link => link.origin === location.origin && link.pathname.endsWith('.html'))
@@ -32,12 +33,12 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
         assert.equal(new URL(page.url()).hash, `#${target}`, file);
       }
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'smooth', file);
+      assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto', file);
       await page.emulateMedia({ reducedMotion: 'no-preference' });
     }
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(`${base}/recrutae-os`);
-    assert.notEqual(await page.locator('.ros-button').first().evaluate(el => getComputedStyle(el).transitionDuration), '0s');
+    assert.equal(await page.locator('.ros-button').first().evaluate(el => getComputedStyle(el).transitionDuration), '0s');
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.waitForTimeout(100);
     const initial = await page.evaluate(() => {
@@ -48,7 +49,8 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
     const intermediate = await page.evaluate(() => scrollY);
     await page.waitForFunction(() => Math.abs(document.getElementById('planos').getBoundingClientRect().top - 104) < 3);
     const final = await page.evaluate(() => scrollY);
-    assert.ok(intermediate > initial && intermediate < final, `Scroll animates over time: ${initial}, ${intermediate}, ${final}`);
+    assert.ok(Math.abs(initial - final) < 2 && Math.abs(intermediate - final) < 2, 'Reduced motion scrolls immediately');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
     for (const width of [1440, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(`${base}/recrutae-os`);

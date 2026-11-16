@@ -51,7 +51,7 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
     const local = await page.evaluate(() => [...document.querySelectorAll('img[src],script[src],link[rel="stylesheet"]')].map(el => el.src || el.href).filter(url => new URL(url).origin === location.origin));
     for (const url of new Set(local)) assert.equal((await page.request.get(url)).status(), 200, url);
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'smooth');
+    assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
     assert.deepEqual(errors, []);
     const plain = await browser.newContext({ javaScriptEnabled: false });
     const fallback = await plain.newPage();

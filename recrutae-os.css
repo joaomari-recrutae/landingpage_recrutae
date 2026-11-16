@@ -439,7 +439,7 @@
   .ros-career-job p { font-size: 10px; }
   .ros-talent-note { font-size: 10px; line-height: 1.8; }
   .ros-demo-board-heading { flex-direction: column; align-items: stretch; gap: 19px; }
-  .ros-board-controls select { font-size: 14px; min-height: 43px; }
+  .ros-board-controls select { font-size: 1rem; min-height: 43px; }
   .ros-board-controls button { font-size: 11px; min-height: 30px; }
   .ros-kanban { min-width: 850px; }
   .ros-kanban-scroll { margin-right: -4px; }

@@ -7,7 +7,7 @@ Fatos-chave (fonte: páginas públicas do site, conferidas em 16/11/2026):
 - Razão social: RECRUTAE LTDA (CNPJ 46.886.680/0001-93)
 - Endereço: Rua Castilho, 392, conj. 101, Brooklin, São Paulo/SP (mesmo endereço da FIND HR)
 - Telefones: (11) 4081-1944, ramal 3046; (11) 5192-8763
-- A consultoria afirma fechar posições complexas 4x mais rápido do que a média do mercado e entregar os primeiros candidatos em até 5 dias úteis no serviço de Recrutamento e Seleção
+- No serviço de Recrutamento e Seleção, a consultoria anuncia a primeira shortlist em até 5 dias úteis, com escopo e cronograma alinhados com a equipe
 - A shortlist apresentada à empresa costuma ter entre 3 e 5 perfis
 - Processo divulgado em quatro etapas: alinhamento da vaga e da cultura; busca com IA (candidatos ativos e passivos); avaliação/triagem humana por consultores do setor; apresentação da shortlist
 - Instagram: [@recrut.ae](https://www.instagram.com/recrut.ae)
@@ -17,7 +17,7 @@ Fatos-chave (fonte: páginas públicas do site, conferidas em 16/11/2026):
 
 - [Recrutamento e Seleção](https://www.recrutae.com.br/recrutamento-selecao): busca de profissionais especializados, com primeiros candidatos em até 5 dias úteis
 - [Alocação](https://www.recrutae.com.br/alocacao): alocação de profissionais de TI (Python, Java, .NET, Golang, Node.js, React, TypeScript, AWS, Azure, DevOps, entre outras) para projetos pontuais ou contratos mais longos, com a gestão contratual feita pela Recrutaê
-- [Busca de candidatos](https://www.recrutae.com.br/busca-candidatos): ferramenta gratuita para a empresa descrever a vaga e receber uma leitura de quantos profissionais com fit existem na base
+- [Busca de candidatos](https://www.recrutae.com.br/busca-candidatos): ferramenta gratuita para a empresa descrever a vaga, enviar o briefing e conversar com a equipe sobre o mapeamento dos perfis
 - [Recrutaê OS](https://www.recrutae.com.br/recrutae-os): sistema da Recrutaê para página de carreiras com a marca da empresa, candidatos por etapa, triagem com IA e entrevistas em vídeo. Acesso à plataforma: [recrutaeos.com.br](https://recrutaeos.com.br)
 - [Sou candidato](https://www.recrutae.com.br/sou-candidato): cadastro de profissionais interessados em vagas de tecnologia e mercado digital
 

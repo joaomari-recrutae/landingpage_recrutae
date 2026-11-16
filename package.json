@@ -1,0 +1,25 @@
+{
+  "name": "recrutae-landingpage",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "node build.cjs",
+    "pretest": "node build.cjs",
+    "predev": "node build.cjs",
+    "metadata": "node scripts/update-structured-data.cjs",
+    "dev": "node scripts/serve-site.cjs",
+    "test": "node --test scripts/*.test.cjs supabase/functions/submit-contact/contact-routing.test.mjs supabase/functions/process-search/search-result.test.mjs"
+  },
+  "dependencies": {
+    "cheerio": "1.2.0",
+    "sanitize-html": "2.18.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright": "1.65.1",
+    "sharp": "0.35.5"
+  }
+}

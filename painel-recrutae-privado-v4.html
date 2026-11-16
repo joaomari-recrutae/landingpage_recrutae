@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Recrutaê</title>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 :root {
@@ -830,6 +830,13 @@ body {
         </div>
       </div>
 
+      <section class="section-card" aria-labelledby="conversion-title" style="margin-bottom:24px">
+        <h2 id="conversion-title" style="font-size:20px;margin-bottom:8px">Contatos confirmados</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Envios salvos com sucesso, separados por público. Amostra dos últimos 500 eventos.</p>
+        <p><strong id="kpi-commercial">—</strong> contatos comerciais · <strong id="kpi-candidates">—</strong> contatos de candidatos</p>
+        <div id="conversion-sources" style="margin-top:16px;overflow-x:auto"></div>
+      </section>
+
       <div class="two-col">
         <div class="section-card">
           <div class="section-header">
@@ -1000,6 +1007,19 @@ async function loadAnalytics() {
   document.getElementById('kpi-complete').textContent  = complete;
   document.getElementById('kpi-conv-rate').textContent  = `${convRate}% taxa de conclusão`;
 
+  const escapeAnalytics = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  document.getElementById('kpi-commercial').textContent = byType.generate_lead || 0;
+  document.getElementById('kpi-candidates').textContent = byType.candidate_contact || 0;
+  const sources = {};
+  events.filter(event => event.event_type === 'generate_lead').forEach(event => {
+    const attribution = event.meta?.attribution || {};
+    const label = [attribution.source || 'direct', attribution.campaign].filter(Boolean).join(' / ');
+    sources[label] = (sources[label] || 0) + 1;
+  });
+  document.getElementById('conversion-sources').innerHTML = Object.keys(sources).length
+    ? '<table class="events-table"><thead><tr><th>Origem / campanha</th><th>Contatos comerciais</th></tr></thead><tbody>' + Object.entries(sources).sort((a,b) => b[1] - a[1]).map(([source,count]) => `<tr><td>${escapeAnalytics(source)}</td><td>${count}</td></tr>`).join('') + '</tbody></table>'
+    : '<p style="font-size:13px;color:var(--muted)">Os novos envios aparecerão aqui com a origem e a campanha. Cliques não contam como contato.</p>';
+
   // Pages chart
   const byPage = {};
   events.filter(e => e.event_type === 'page_view').forEach(e => {
@@ -1011,7 +1031,7 @@ async function loadAnalytics() {
   const maxP = sortedPages[0]?.[1] || 1;
   pagesEl.innerHTML = sortedPages.map(([page, count]) => `
     <div class="bar-row">
-      <div class="bar-label" title="${page}">${page.length > 24 ? page.slice(0, 24) + '…' : page}</div>
+      <div class="bar-label" title="${escapeAnalytics(page)}">${escapeAnalytics(page.length > 24 ? page.slice(0, 24) + '…' : page)}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${count / maxP * 100}%"></div></div>
       <div class="bar-count">${count}</div>
     </div>
@@ -1028,7 +1048,7 @@ async function loadAnalytics() {
   const maxR = sortedRef[0]?.[1] || 1;
   refEl.innerHTML = sortedRef.map(([ref, count]) => `
     <div class="bar-row">
-      <div class="bar-label" title="${ref}">${ref.length > 24 ? ref.slice(0, 24) + '…' : ref}</div>
+      <div class="bar-label" title="${escapeAnalytics(ref)}">${escapeAnalytics(ref.length > 24 ? ref.slice(0, 24) + '…' : ref)}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${count / maxR * 100}%;background:var(--blue)"></div></div>
       <div class="bar-count">${count}</div>
     </div>
@@ -1078,8 +1098,8 @@ async function loadAnalytics() {
       <tbody>
         ${recent.map(e => `
           <tr>
-            <td><span class="event-chip chip-${e.event_type}">${e.event_type}</span></td>
-            <td class="td-muted">${e.page || '—'}</td>
+            <td><span class="event-chip chip-${String(e.event_type).replace(/[^a-z_]/g, '')}">${escapeAnalytics(e.event_type)}</span></td>
+            <td class="td-muted">${escapeAnalytics(e.page || '—')}</td>
             <td class="td-mono">${(e.session_id || '').slice(0, 12)}…</td>
             <td class="td-date">${fmtDate(e.created_at)}</td>
           </tr>
@@ -1148,7 +1168,7 @@ function buildLeadCard(l) {
       </div>
       <div class="lead-right">
         <div class="lead-count">${l.candidate_count ?? '—'}</div>
-        <div class="lead-count-label">candidatos</div>
+        <div class="lead-count-label">estimativa da IA</div>
       </div>
       <svg class="lead-chevron" id="exp-${l.id}" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <polyline points="2,5 7,10 12,5"/>

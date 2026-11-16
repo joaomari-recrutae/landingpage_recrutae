@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Recrutaê | Artigos sobre Recrutamento de TI e Liderança</title>
@@ -20,13 +23,11 @@
   <meta property="twitter:title" content="Blog Recrutaê | Recrutamento e Liderança Tech">
   <meta property="twitter:description" content="Insights, estratégias e tendências de recrutamento para líderes e empresas.">
   <meta property="twitter:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
-  <link rel="icon" href="assets/logos/favicon-square.png" type="image/png">
-  <script src="scroll-navigation.js?v=2" defer></script>
+  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
+  <script src="/scroll-navigation.js?v=2" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script type="application/ld+json" id="recrutae-structured-data">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.recrutae.com.br/blog#webpage","url":"https://www.recrutae.com.br/blog","name":"Blog Recrutaê | Artigos sobre Recrutamento de TI e Liderança","description":"Insights, estratégias e tendências de recrutamento, gestão de pessoas e mercado de tecnologia para líderes e empresas brasileiras.","inLanguage":"pt-BR","isPartOf":{"@id":"https://www.recrutae.com.br/#website"},"about":{"@id":"https://www.recrutae.com.br/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.recrutae.com.br/"},{"@type":"ListItem","position":2,"name":"Blog Recrutaê | Artigos sobre Recrutamento de TI e Liderança","item":"https://www.recrutae.com.br/blog"}]}]}</script>
 </head>
 <body>
   <div id="page-overlay"></div>
@@ -34,11 +35,11 @@
   <nav class="navbar transparent on-dark" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
-        <img src="assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
+        <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-light" loading="eager">
+        <img src="/assets/logos/Principal_Recrutae horizontal 2026.png" alt="Recrutaê" class="logo-dark" loading="eager">
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
+        <li class="nav-item"><a href="/recrutae-os" class="nav-link nav-link-os" title="Conhecer o Recrutaê OS"><img src="/assets/recrutae-os/recrutae-os-lockup-navy.png" alt="Recrutaê OS" width="116" height="28"></a></li>
         <li class="nav-item has-dropdown">
           <a href="#" class="nav-link">Sou empresa <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <ul class="dropdown">
@@ -85,7 +86,7 @@
           </ul>
         </li>
       </ul>
-      <a href="/#contato" class="btn-cta-nav">Agendar Reunião</a>
+      <a href="/#contato" class="btn-cta-nav">Falar com especialista</a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -182,7 +183,7 @@
             <div class="blog-post-arrow">→</div>
           </a>
 
-          <a href="/blog-post?post=employer-branding-talentos" class="blog-post-row extra-post" style="display:none; opacity:1; transform:none;">
+          <a href="/blog-post?post=employer-branding-talentos" class="blog-post-row extra-post" style="opacity:1; transform:none;">
             <div class="blog-post-thumb" style="background: url('assets/blog/blog6_marca_v2.svg') center/cover no-repeat;"></div>
             <div class="blog-post-content">
               <div class="blog-post-meta">
@@ -195,7 +196,7 @@
             <div class="blog-post-arrow">→</div>
           </a>
 
-          <a href="/blog-post?post=retencao-de-talentos" class="blog-post-row extra-post" style="display:none; opacity:1; transform:none;">
+          <a href="/blog-post?post=retencao-de-talentos" class="blog-post-row extra-post" style="opacity:1; transform:none;">
             <div class="blog-post-thumb" style="background: url('assets/blog/blog7_retencao_v2.svg') center/cover no-repeat;"></div>
             <div class="blog-post-content">
               <div class="blog-post-meta">
@@ -208,7 +209,7 @@
             <div class="blog-post-arrow">→</div>
           </a>
 
-          <a href="/blog-post?post=diversidade-na-lideranca" class="blog-post-row extra-post" style="display:none; opacity:1; transform:none;">
+          <a href="/blog-post?post=diversidade-na-lideranca" class="blog-post-row extra-post" style="opacity:1; transform:none;">
             <div class="blog-post-thumb" style="background: url('assets/blog/blog8_diversidade_1780487250207.png') center/cover no-repeat;"></div>
             <div class="blog-post-content">
               <div class="blog-post-meta">
@@ -225,85 +226,11 @@
         <div id="noResultsMessage" style="display:none; text-align:center; padding:48px 0; color:var(--text-muted); font-family:var(--font-display); font-size:18px;">
           Nenhum artigo encontrado para a sua busca.
         </div>
-        <div style="text-align:center;margin-top:48px" class="animate-up" id="verMaisContainer">
+        <div style="text-align:center;margin-top:48px" class="animate-up" id="verMaisContainer" hidden>
           <button class="btn btn-outline-black" id="verMaisBtn" style="cursor:pointer">VER MAIS</button>
         </div>
-        
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const verMaisBtn = document.getElementById('verMaisBtn');
-            const verMaisContainer = document.getElementById('verMaisContainer');
-            const hiddenPosts = document.querySelectorAll('.extra-post');
-            const allPosts = document.querySelectorAll('.blog-post-row');
-            const searchInput = document.getElementById('blogSearchInput');
-            const noResultsMessage = document.getElementById('noResultsMessage');
-            
-            let verMaisClicked = false;
-            
-            if(verMaisBtn) {
-              verMaisBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                verMaisClicked = true;
-                hiddenPosts.forEach(post => {
-                  post.style.display = 'grid';
-                  post.classList.add('visible');
-                });
-                verMaisContainer.style.display = 'none';
-              });
-            }
-            
-            if(searchInput) {
-              searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                let visibleCount = 0;
-                
-                if (query.length > 0) {
-                  // Hide "Ver mais" container during search
-                  if(verMaisContainer) verMaisContainer.style.display = 'none';
-                  
-                  allPosts.forEach(post => {
-                    const title = post.querySelector('.blog-post-title').textContent.toLowerCase();
-                    const tag = post.querySelector('.blog-post-tag').textContent.toLowerCase();
-                    
-                    if (title.includes(query) || tag.includes(query)) {
-                      post.style.display = 'grid';
-                      post.style.opacity = '1';
-                      post.style.transform = 'none';
-                      visibleCount++;
-                    } else {
-                      post.style.display = 'none';
-                    }
-                  });
-                  
-                  if (visibleCount === 0) {
-                    noResultsMessage.style.display = 'block';
-                  } else {
-                    noResultsMessage.style.display = 'none';
-                  }
-                } else {
-                  // Restore default state
-                  noResultsMessage.style.display = 'none';
-                  
-                  if (verMaisClicked) {
-                    if(verMaisContainer) verMaisContainer.style.display = 'none';
-                    allPosts.forEach(post => {
-                      post.style.display = 'grid';
-                    });
-                  } else {
-                    if(verMaisContainer) verMaisContainer.style.display = 'block';
-                    allPosts.forEach(post => {
-                      if (post.classList.contains('extra-post')) {
-                        post.style.display = 'none';
-                      } else {
-                        post.style.display = 'grid';
-                      }
-                    });
-                  }
-                }
-              });
-            }
-          });
-        </script>
+
+
       </div>
     </section>
 
@@ -313,7 +240,7 @@
         <div class="contact-header animate-up">
           <h2 class="section-title" style="color:var(--white);max-width:600px;margin:0 auto;text-align:center">Quer ver mais conteúdos da Recrutaê? Siga nossas <em>redes sociais</em></h2>
         </div>
-        <div class="social-cards animate-up" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto">
+        <div class="social-cards animate-up">
           <a href="https://www.instagram.com/recrut.ae" target="_blank" rel="noopener" class="social-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px 32px;border:1px solid rgba(245,197,24,0.3);text-decoration:none;transition:border-color 0.2s">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="var(--gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="var(--gold)" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="var(--gold)"/></svg>
             <span style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--cream);letter-spacing:0.08em">INSTAGRAM</span>
@@ -334,7 +261,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
+          <img src="/assets/logos/Recrutae horizontal 2026.png" alt="Recrutaê" class="footer-logo" loading="lazy">
           <p class="footer-desc">Recrutamento Digital Escalável para o mercado brasileiro.</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/recrut.ae" target="_blank" rel="noopener" aria-label="Instagram">
@@ -360,9 +287,7 @@
       </div>
     </div>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-  <script src="blog-loader.js?v=1"></script>
-  <script src="script.js?v=7"></script>
+  <script src="/blog-loader.js?v=2"></script>
+  <script src="/script.js?v=8"></script>
 </body>
 </html>

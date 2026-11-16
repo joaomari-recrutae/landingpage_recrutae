@@ -1,5 +1,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const posts = require('../blog-data.js');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
 
@@ -18,7 +19,7 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
       assert.equal(response.status(), 200, url.href);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), url.href);
       if (url.searchParams.has('post')) {
-        await page.waitForFunction(slug => typeof blogData !== 'undefined' && document.title === `${blogData[slug].title} | Recrutaê Blog`, url.searchParams.get('post'));
+        assert.equal(await page.title(), `${posts[url.searchParams.get('post')].title} | Recrutaê Blog`);
       }
       const heading = (await page.locator('h1').innerText()).trim();
       assert.ok(heading && !/não encontrad/i.test(heading), url.href);

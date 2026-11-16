@@ -1,0 +1,286 @@
+{
+  "tecnologia": {
+    "name": "Tecnologia",
+    "color": "#4B9EFF",
+    "hero": "Recrutamento e Seleção para o Setor de Tecnologia",
+    "sub": "Encontre os melhores talentos tech para acelerar sua transformação digital.",
+    "challenges": [
+      "Competitividade acirrada por talentos tech em escala global",
+      "Dificuldade em encontrar perfis que aliam liderança técnica e visão de negócio",
+      "Rotatividade alta e guerra por talentos entre empresas de tecnologia",
+      "Necessidade de atualização constante em stacks e metodologias emergentes"
+    ],
+    "positions": [
+      "Product Manager",
+      "Engenheiro de Software",
+      "CTO",
+      "Head de Dados",
+      "DevOps",
+      "Arquiteto de Soluções",
+      "Scrum Master",
+      "QA Lead",
+      "Data Scientist",
+      "CISO"
+    ]
+  },
+  "telecom": {
+    "name": "Telecom",
+    "color": "#FF6B35",
+    "hero": "Recrutamento Especializado para Telecomunicações",
+    "sub": "Líderes capazes de navegar a convergência entre redes, digital e customer experience.",
+    "challenges": [
+      "Transformação digital acelerada com infraestrutura legada ainda em operação",
+      "Convergência entre telecom tradicional e plataformas digitais exige perfis híbridos",
+      "Pressão regulatória e por eficiência operacional simultaneamente",
+      "Expansão 5G demanda especialistas raros no mercado"
+    ],
+    "positions": [
+      "Engenheiro de Telecomunicações",
+      "Gerente de Operações de Rede",
+      "Head de Infraestrutura",
+      "Especialista em 5G",
+      "Gestor de Projetos Telecom",
+      "Head de Customer Experience"
+    ]
+  },
+  "midia": {
+    "name": "Mídia",
+    "color": "#9B59B6",
+    "hero": "Talentos para a Indústria de Mídia e Entretenimento",
+    "sub": "Profissionais que unem criatividade editorial com domínio de plataformas digitais.",
+    "challenges": [
+      "Transformação do modelo de negócio de mídia tradicional para digital-first",
+      "Monetização de conteúdo em ambiente de streaming e redes sociais",
+      "Necessidade de profissionais que entendam dados e audiência simultaneamente",
+      "Concorrência com grandes plataformas globais por talentos criativos"
+    ],
+    "positions": [
+      "Head de Conteúdo Digital",
+      "Gerente de Plataformas",
+      "Diretor Comercial",
+      "Head de Marketing",
+      "Editor-chefe",
+      "Head de Produto de Mídia"
+    ]
+  },
+  "varejo": {
+    "name": "Varejo",
+    "color": "#E74C3C",
+    "hero": "Recrutamento para o Varejo Omnichannel",
+    "sub": "Executivos que dominam a integração entre loja física, e-commerce e experiência do cliente.",
+    "challenges": [
+      "Integração entre canais online e offline sem fricção para o consumidor",
+      "Gestão da cadeia de suprimentos com alta volatilidade de demanda",
+      "Pressão crescente de marketplaces e concorrentes digitais",
+      "Transformação da experiência de compra com tecnologia e personalização"
+    ],
+    "positions": [
+      "Head de E-commerce",
+      "Gerente de Operações",
+      "Diretor de Expansão",
+      "Head de CX",
+      "Gestor de Categoria",
+      "Head de Supply Chain Varejo"
+    ]
+  },
+  "bens-consumo": {
+    "name": "Bens de Consumo",
+    "color": "#27AE60",
+    "hero": "Talentos para Bens de Consumo e FMCG",
+    "sub": "Líderes que equilibram inovação de portfólio, distribuição e sustentabilidade.",
+    "challenges": [
+      "Competição acirrada com marcas globais e regionais em todos os segmentos",
+      "Pressão por eficiência na cadeia de distribuição e precificação dinâmica",
+      "Consumidor mais exigente quanto a sustentabilidade e transparência",
+      "Digitalização do trade marketing e dos canais de venda"
+    ],
+    "positions": [
+      "Gerente de Produto",
+      "Head de Trade Marketing",
+      "Diretor Comercial",
+      "Gerente de Key Accounts",
+      "Head de Supply Chain",
+      "Gerente de Inovação"
+    ]
+  },
+  "logistica": {
+    "name": "Logística",
+    "color": "#F39C12",
+    "hero": "Especialistas em Recrutamento para Logística e Supply Chain",
+    "sub": "Profissionais que transformam complexidade operacional em vantagem competitiva.",
+    "challenges": [
+      "Pressão crescente por last-mile delivery rápido e sustentável",
+      "Automação de armazéns e centros de distribuição exige novos perfis",
+      "Visibilidade em tempo real da supply chain como diferencial competitivo",
+      "Gestão de custos e margens em ambiente inflacionário"
+    ],
+    "positions": [
+      "Gerente de Operações",
+      "Head de Supply Chain",
+      "Coordenador de Distribuição",
+      "Gerente de Frotas",
+      "Especialista em WMS",
+      "Head de Planejamento Logístico"
+    ]
+  },
+  "servicos-financeiros": {
+    "name": "Serviços Financeiros",
+    "color": "#1ABC9C",
+    "hero": "Recrutamento para Serviços Financeiros",
+    "sub": "Executivos que navegam regulação, Open Finance e transformação digital simultaneamente.",
+    "challenges": [
+      "Open Finance e Banking as a Service redefinem modelos de negócio tradicionais",
+      "Regulamentação crescente do Banco Central exige perfis técnicos e de compliance",
+      "Concorrência das fintechs força bancos a acelerar transformação digital",
+      "Gestão de risco em ambiente de juros altos e inadimplência volátil"
+    ],
+    "positions": [
+      "Gerente de Produtos Financeiros",
+      "Head de Compliance",
+      "Especialista em Open Banking",
+      "Gerente de Risco",
+      "Head de Transformação Digital",
+      "Gerente de Câmbio"
+    ]
+  },
+  "banking": {
+    "name": "Banking",
+    "color": "#2980B9",
+    "hero": "Recrutamento Especializado para o Setor Bancário",
+    "sub": "Líderes que conciliam tradição financeira com agilidade digital e inovação.",
+    "challenges": [
+      "Pressão das fintechs e bancos digitais força reinvenção constante",
+      "Digitalização de agências e migração de clientes para canais online",
+      "Regulação prudencial e stress tests exigem expertise técnico especializado",
+      "Atração de talentos tech para um ambiente corporativo tradicional"
+    ],
+    "positions": [
+      "CEO de Banco Digital",
+      "Head de Corporate Banking",
+      "Gerente de Wealth Management",
+      "Head de Crédito",
+      "Gerente de Produtos Bancários",
+      "Head de Open Finance"
+    ]
+  },
+  "agro": {
+    "name": "Agro",
+    "color": "#8BC34A",
+    "hero": "Talentos para o Agronegócio Brasileiro",
+    "sub": "Profissionais que unem conhecimento técnico do campo com gestão moderna e tecnologia.",
+    "challenges": [
+      "Incorporação de AgTech e precisão digital nas operações agrícolas",
+      "Rastreabilidade e certificações para mercados exportadores exigentes",
+      "Sustentabilidade e ESG como requisito de entrada em cadeias globais",
+      "Gestão financeira sofisticada para operações de grande escala"
+    ],
+    "positions": [
+      "Gerente Agrícola",
+      "Head de AgTech",
+      "Diretor Comercial Agro",
+      "Especialista em Commodities",
+      "Gestor de Propriedade Rural",
+      "Head de Sustentabilidade Agro"
+    ]
+  },
+  "energia": {
+    "name": "Energia",
+    "color": "#FFC107",
+    "hero": "Recrutamento para o Setor de Energia",
+    "sub": "Executivos que lideram a transição energética com competência técnica e visão de futuro.",
+    "challenges": [
+      "Transição para energias renováveis cria demanda por perfis técnicos especializados",
+      "Regulação ANEEL em constante evolução exige expertise regulatório",
+      "Projetos de energia solar e eólica crescem acima da disponibilidade de talentos",
+      "ESG como pilar estratégico em todas as decisões do setor"
+    ],
+    "positions": [
+      "Engenheiro de Energia",
+      "Head de Projetos Renováveis",
+      "Gerente Regulatório",
+      "Especialista em ESG",
+      "Diretor de Operações de Usina",
+      "Head de Trading Energético"
+    ]
+  },
+  "seguros": {
+    "name": "Seguros",
+    "color": "#3498DB",
+    "hero": "Especialistas em Recrutamento para o Mercado de Seguros",
+    "sub": "Talentos que navegam a digitalização do mercado segurador com expertise atuarial e comercial.",
+    "challenges": [
+      "Insurtech transformando modelos de distribuição e pricing tradicionais",
+      "Digitalização da jornada do cliente e automação de sinistros",
+      "Regulação SUSEP em evolução constante exige especialistas qualificados",
+      "Atração de perfis tech para um setor historicamente conservador"
+    ],
+    "positions": [
+      "Atuário Sênior",
+      "Gerente de Produtos de Seguro",
+      "Head de Sinistros",
+      "Gerente Comercial",
+      "Especialista em Regulação SUSEP",
+      "Head de Insurtech"
+    ]
+  },
+  "educacao": {
+    "name": "Educação",
+    "color": "#9C27B0",
+    "hero": "Talentos para EdTechs e Instituições de Ensino",
+    "sub": "Líderes que combinam visão pedagógica com domínio de tecnologia educacional.",
+    "challenges": [
+      "EdTechs em crescimento acelerado competem por talentos escassos em produto e tech",
+      "Ensino híbrido demanda líderes com competências pedagógicas e digitais simultâneas",
+      "Queda de matrículas presenciais pressiona IES a inovar em modelo de negócio",
+      "Personalização em escala via IA e dados como diferencial competitivo"
+    ],
+    "positions": [
+      "Head de Produto Educacional",
+      "Gerente de Parcerias B2B",
+      "Diretor Pedagógico",
+      "Head de Growth",
+      "Coordenador Acadêmico",
+      "Head de Customer Success Educação"
+    ]
+  },
+  "saude": {
+    "name": "Saúde",
+    "color": "#E91E63",
+    "hero": "Recrutamento para Saúde e HealthTech",
+    "sub": "Profissionais que unem expertise clínica com capacidade de gestão e inovação digital.",
+    "challenges": [
+      "Digitalização da saúde e telemedicina exigem perfis médicos com letramento tecnológico",
+      "Regulação ANVISA e ANS cria demanda constante por especialistas de compliance",
+      "HealthTechs crescem rapidamente e precisam de líderes de produto e tech especializados",
+      "Gestão hospitalar sob pressão de custos e qualidade simultaneamente"
+    ],
+    "positions": [
+      "Médico Gestor",
+      "Head de HealthTech",
+      "Gerente de Operações Hospitalares",
+      "Especialista em Regulação Saúde",
+      "Head de Produto Health",
+      "Diretor Médico"
+    ]
+  },
+  "games": {
+    "name": "Games",
+    "color": "#FF5722",
+    "hero": "Talentos para a Indústria de Games",
+    "sub": "Criadores e gestores que constroem experiências memoráveis e negócios sustentáveis.",
+    "challenges": [
+      "Mercado global de games no Brasil cresce acima de 15% ao ano",
+      "Escassez de game designers e programadores especializados em engines 3D",
+      "Monetização via live service e battle passes exige expertise em product management",
+      "Esports e streaming como canais de aquisição e retenção de jogadores"
+    ],
+    "positions": [
+      "Game Designer",
+      "Head de Monetização",
+      "Gerente de Comunidade",
+      "Produtor de Games",
+      "Head de Esports",
+      "Programador de Engine"
+    ]
+  }
+}

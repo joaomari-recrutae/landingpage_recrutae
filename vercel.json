@@ -1,9 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "outputDirectory": ".",
+  "buildCommand": "npm run build",
   "functions": {
     "api/*.js": {
-      "includeFiles": "templates/*.html"
+      "includeFiles": "{templates/*.html,data/*.json,blog-data.js,404.html,.generated/*.cjs}"
     }
   },
   "redirects": [

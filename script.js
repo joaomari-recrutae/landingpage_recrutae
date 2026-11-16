@@ -19,63 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initForm, 'form');
   safe(initPageTransitions, 'pageTransitions');
   safe(initInstagram, 'instagram');
-  safe(initAnalytics, 'analytics');
+
 
 });
-
-/* =========================================================
-   ANALYTICS — Simple tracking for page views and CTAs
-   ========================================================= */
-const ANALYTICS_URL  = 'https://niqouquemmtaokciaxpn.supabase.co/rest/v1/analytics_events';
-const ANALYTICS_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pcW91cXVlbW10YW9rY2lheHBuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5OTMyNzYsImV4cCI6MjA5NTU2OTI3Nn0.v7j1VxmRIIgxla9MEamhlDyGJNlRLAjC_GYkJyIG3w0';
-
-function initAnalytics() {
-  // 1. Get or create Session ID
-  let sid = localStorage.getItem('rec_sid');
-  if (!sid) {
-    sid = crypto.randomUUID?.() || Math.random().toString(36).slice(2) + Date.now().toString(36);
-    localStorage.setItem('rec_sid', sid);
-  }
-
-  const track = async (type, meta = {}) => {
-    try {
-      fetch(ANALYTICS_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': ANALYTICS_KEY,
-          'Authorization': `Bearer ${ANALYTICS_KEY}`,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({
-          session_id: sid,
-          event_type: type,
-          page: location.pathname,
-          meta: {
-            ...meta,
-            referrer: document.referrer,
-            screen: `${window.innerWidth}x${window.innerHeight}`,
-            ua: navigator.userAgent
-          }
-        })
-      });
-    } catch (e) { /* silent */ }
-  };
-
-  // 2. Track Page View
-  track('page_view');
-
-  // 3. Track CTA Clicks
-  document.querySelectorAll('.btn, .btn-gold, .btn-cta-nav, .busca-start-btn, .btn-wapp').forEach(btn => {
-    btn.addEventListener('click', () => {
-      track('cta_click', { 
-        text: btn.innerText.trim().slice(0, 50),
-        id: btn.id || null,
-        class: btn.className
-      });
-    });
-  });
-}
 
 /* =========================================================
    NAVBAR
@@ -161,7 +107,7 @@ function initMobileMenu() {
       html += `</div>`;
     }
   });
-  html += `<div class="mob-cta"><a href="#contato" class="btn btn-gold btn-full" onclick="closeMobileMenu()">Agendar Reunião</a></div>`;
+  html += `<div class="mob-cta"><a href="#contato" class="btn btn-gold btn-full" onclick="closeMobileMenu()">Falar com especialista</a></div>`;
   overlay.innerHTML = html;
 
   // Accordion
@@ -306,25 +252,24 @@ function initIndustries() {
    SCROLL ANIMATIONS
    ========================================================= */
 function initScrollAnimations() {
-  const els = document.querySelectorAll('.animate-up, .reveal-right');
-  if (!els.length) return;
-
-  const vh = window.innerHeight || document.documentElement.clientHeight;
-  els.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < vh * 0.95) el.classList.add('in-view');
-  });
-
-  const obs = new IntersectionObserver((entries) => {
+  const elements = document.querySelectorAll('.animate-up, .reveal-right');
+  if (!elements.length) return;
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(element => element.classList.add('in-view'));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        obs.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in-view');
+      entry.target.classList.remove('reveal-pending');
+      observer.unobserve(entry.target);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  els.forEach(el => { if (!el.classList.contains('in-view')) obs.observe(el); });
+  }, { threshold: 0.08, rootMargin: '0px 0px 40px 0px' });
+  elements.forEach(element => {
+    if (element.getBoundingClientRect().top < innerHeight) element.classList.add('in-view');
+    else { observer.observe(element); element.classList.add('reveal-pending'); }
+  });
 }
 
 /* =========================================================
@@ -362,16 +307,19 @@ function initInstagram() {
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
 
-  fetch(FEED_URL)
-    .then(r => r.json())
-    .then(data => {
+  fetch(FEED_URL, { signal: AbortSignal.timeout(5000) })
+    .then(r => { if (!r.ok) throw Error('Feed unavailable'); return r.json(); })
+    .then(async data => {
       if (!data?.success || !Array.isArray(data.posts) || !data.posts.length) {
         // API do Instagram ainda não configurada/indisponível — mantém as
         // 3 imagens reais de posts (fallback) já presentes no HTML
         return;
       }
 
-      grid.innerHTML = data.posts.map(post => `
+      const posts = data.posts.filter(post => /^https:\/\//.test(post.permalink) && /^https:\/\//.test(post.image));
+      if (!posts.length) return;
+      await Promise.all(posts.map(post => new Promise((resolve, reject) => { const image = new Image(); const timer = setTimeout(reject, 4000); image.onload = () => { clearTimeout(timer); resolve(); }; image.onerror = () => { clearTimeout(timer); reject(); }; image.src = post.image; })));
+      grid.innerHTML = posts.map(post => `
         <a href="${escHtml(post.permalink)}" target="_blank" rel="noopener" class="insta-item"
            style="background-image:url('${escHtml(post.image).replace(/'/g, '%27')}'); background-size:cover; background-position:center; border-radius:16px;"
            title="${escHtml(post.caption)}">
@@ -391,6 +339,10 @@ function initCounters() {
   const counters = document.querySelectorAll('.counter');
   if (!counters.length) return;
 
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    counters.forEach(element => { element.textContent = element.dataset.target; });
+    return;
+  }
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -434,12 +386,12 @@ function initCarousel() {
     dots[cur]?.classList.add('active');
   }
 
-  function start() { timer = setInterval(() => go(cur + 1), 5000); }
+  function start() { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => go(cur + 1), 5000); }
   function stop()  { clearInterval(timer); }
 
   prev?.addEventListener('click', () => { stop(); go(cur - 1); start(); });
   next?.addEventListener('click', () => { stop(); go(cur + 1); start(); });
-  dots.forEach(d => d.addEventListener('click', () => { stop(); go(+d.dataset.index); start(); }));
+  dots.forEach((dot, index) => { dot.setAttribute('aria-label', `Ver depoimento ${index + 1}`); dot.addEventListener('click', () => { stop(); go(+dot.dataset.index); start(); }); });
 
   start();
 }
@@ -484,8 +436,9 @@ function setupContactForm(form) {
       ? '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
       : '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 13.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
     const msg = okState
-      ? 'Mensagem enviada! Entraremos em contato em breve.'
+      ? (form.id === 'contactFormCandidato' ? 'Cadastro recebido. Nossa equipe tem seu interesse registrado.' : 'Solicitação recebida. Nossa equipe entrará em contato para conversar sobre sua necessidade.')
       : 'Não foi possível enviar agora. Tente novamente ou escreva para contato@recrutae.com.br.';
+    success.setAttribute('role', okState ? 'status' : 'alert');
     success.innerHTML = icon + '<span>' + msg + '</span>';
     success.style.display = 'flex';
     success.classList.add('visible');
@@ -493,6 +446,7 @@ function setupContactForm(form) {
     success.style.color = okState ? '' : '#F87171';
   };
 
+  form.addEventListener('focusin', () => window.recrutaeAnalytics?.track('form_start', { form_id: form.id }), { once: true });
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let ok = true;
@@ -502,10 +456,10 @@ function setupContactForm(form) {
       if (!email.value.trim()) { setErr(email, 'Informe seu e-mail.'); ok = false; }
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { setErr(email, 'E-mail inválido.'); ok = false; }
     }
-    if (!ok) return;
+    if (!ok) { window.recrutaeAnalytics?.track('form_validation_error', { form_id: form.id }); return; }
 
     const val = n => form.querySelector(`[name=${n}]`)?.value.trim() || '';
-    const types = [...form.querySelectorAll('input[name=tipo]:checked')].map(c => c.value);
+    const types = [...form.querySelectorAll('input[name=tipo]')].filter(input => input.type === 'hidden' || input.checked).map(input => input.value);
     const candidateOnly = form.id === 'contactFormCandidato'
       || (types.includes('candidato') && !types.includes('empresa'));
     const payload = {
@@ -520,7 +474,7 @@ function setupContactForm(form) {
       sourcePage: (document.title || '').replace(/\s*[—|].*$/, '').trim() || location.pathname,
     };
 
-    if (btn) btn.disabled = true;
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
     if (btnText) btnText.textContent = 'Enviando…';
 
     try {
@@ -528,15 +482,20 @@ function setupContactForm(form) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(15000),
       });
       if (!resp.ok) throw new Error('status ' + resp.status);
+      const result = await resp.json();
+      if (result.success !== true) throw new Error('Contact was not saved');
+      window.recrutaeAnalytics?.contact(candidateOnly ? 'candidate' : 'company', form.id);
       form.reset();
       showResult(true);
     } catch (err) {
+      window.recrutaeAnalytics?.track('form_error', { form_id: form.id, reason: err.name === 'TimeoutError' ? 'timeout' : 'request_failed' });
       console.error('[recrutae] envio de contato falhou', err);
       showResult(false);
     } finally {
-      if (btn) btn.disabled = false;
+      if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); }
       if (btnText) btnText.textContent = defaultLabel;
     }
   });
@@ -553,9 +512,12 @@ function initPageTransitions() {
     document.body.insertBefore(overlay, document.body.firstChild);
   }
 
+  const clearOverlay = () => overlay.classList.remove('active');
+  clearOverlay();
+  window.addEventListener('pageshow', clearOverlay);
   document.querySelectorAll('a').forEach(a => {
     const href = a.getAttribute('href');
-    if (!href || a.target === '_blank' || a.classList.contains('no-transition')) return;
+    if (!href || a.target === '_blank' || a.hasAttribute('download') || a.classList.contains('no-transition')) return;
     
     // Ignora links internos, protocolos e links externos
     if (
@@ -572,9 +534,11 @@ function initPageTransitions() {
       const url = new URL(a.href, location.href);
       if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
 
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       e.preventDefault();
       const dest = a.href;
       overlay.classList.add('active');
+      setTimeout(clearOverlay, 1800);
       
       // Reduzimos o timeout para 250ms para ser mais responsivo (combina com o ease-in do CSS)
       setTimeout(() => { 

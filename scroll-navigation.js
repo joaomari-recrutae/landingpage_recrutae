@@ -15,7 +15,7 @@
     }
     window.scrollTo({
       top: Math.max(0, target.getBoundingClientRect().top + scrollY - offset),
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
     });
     if (!target.hasAttribute('tabindex')) {
       target.setAttribute('tabindex', '-1');

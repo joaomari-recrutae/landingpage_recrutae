@@ -1,0 +1,33 @@
+Original WOFF2 files supplied by Google Fonts, downloaded 2026-11-16.
+No font conversion or subsetting was performed locally.
+CSS API: https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap
+
+bricolage-grotesque-latin-ext.woff2
+Source: https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGGInHEVA.woff2
+SHA-256: 776f6dcaf03636cd69a5802c94808cc8896c0a66c8e9ce0fe147231b6ee01957
+
+bricolage-grotesque-latin.woff2
+Source: https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2
+SHA-256: a79fdb52d4a5c76552452f69202add96e287401fff03d3e8c0e38b4dcb5a99cd
+
+dm-sans-italic-latin-ext.woff2
+Source: https://fonts.gstatic.com/s/dmsans/v17/rP2Fp2ywxg089UriCZa4ET-DNl0.woff2
+SHA-256: b72f7226650dcbc66e1e6ccdc9e53dc8c66107357eeac2d2a4ca18942c42f360
+
+dm-sans-italic-latin.woff2
+Source: https://fonts.gstatic.com/s/dmsans/v17/rP2Fp2ywxg089UriCZa4Hz-D.woff2
+SHA-256: d5c53a50536536971ea27318a590dbf723a190dd2f608e7a92929a021cc0ebaa
+
+dm-sans-latin-ext.woff2
+Source: https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZ2IHSeH.woff2
+SHA-256: 5d18d31d23ada61ebee1d589b11d5da30db9e158f589d5e35221ba2b1a45de54
+
+dm-sans-latin.woff2
+Source: https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2
+SHA-256: ca72d2bcea8f4daa783dbdfa2d9b46068c3ce38168e05918fb867aa453b4f890
+
+bricolage-grotesque-OFL.txt
+Source: https://raw.githubusercontent.com/google/fonts/main/ofl/bricolagegrotesque/OFL.txt
+
+dm-sans-OFL.txt
+Source: https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt
