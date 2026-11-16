@@ -37,3 +37,4 @@
 - Busca `process-search` publicada na Supabase, preservando a configuração pública de autenticação existente. OPTIONS 200 e payload inválido 400 verificados sem registrar contatos ou enviar e-mails de teste.
 - Prévia final validada: `landingpage-recrutae-j1w4p1brz-recrutae.vercel.app`. Promoção em produção: `dpl_2QzSkvCeD6F6bnoqE91kTY2FmHBU`, estado READY, alias `www.recrutae.com.br`.
 - Os cases empresariais dependem dos dados autorizados que o usuário informou que enviará depois. O material de preparação está em `docs/company-cases.md`.
+- Na revisão dos prints finais, corrigido o contraste dos rótulos e placeholders de contato e das instruções, ações e estados do briefing. O aviso de privacidade do briefing agora permanece legível sobre o fundo escuro. Textos secundários e o botão WhatsApp foram medidos no navegador com contraste mínimo de 4,5:1. Revalidados os 33 testes e os estados de erro/retry/confirmação sem envios reais.

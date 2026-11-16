@@ -23,7 +23,7 @@
   <meta property="twitter:title" content="Plataforma de Busca de Candidatos Grátis | Recrutaê">
   <meta property="twitter:description" content="Simule sua vaga e deixe nossa IA encontrar os melhores candidatos do mercado.">
   <meta property="twitter:image" content="https://www.recrutae.com.br/assets/logos/Recrutae%20horizontal%202026.png">
-  <link rel="stylesheet" href="/style.css?v=12">
+  <link rel="stylesheet" href="/style.css?v=13">
   <link rel="icon" href="/assets/logos/favicon-square.png" type="image/png">
   <style>
     /* =========================================================
@@ -235,6 +235,8 @@
        WIZARD OVERLAY
        ========================================================= */
     .wizard-overlay {
+      --wizard-muted: #B8B4CC;
+      --wizard-subtle: #9B96B0;
       position: fixed;
       inset: 0;
       z-index: 9999;
@@ -292,7 +294,7 @@
     .wiz-dot.active { background: var(--gold); transform: scale(1.4); }
     .wiz-step-lbl {
       font-size: 11px;
-      color: rgba(245,240,232,.28);
+      color: var(--wizard-muted);
       letter-spacing: .1em;
       text-transform: uppercase;
     }
@@ -300,7 +302,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: rgba(245,240,232,.35);
+      color: var(--wizard-muted);
       padding: 8px;
       display: flex;
       align-items: center;
@@ -349,7 +351,7 @@
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: rgba(245,185,20,.5);
+      color: var(--gold);
       display: block;
       margin-bottom: 12px;
     }
@@ -364,7 +366,7 @@
     }
     .step-hint {
       font-size: 13px;
-      color: rgba(245,240,232,.32);
+      color: var(--wizard-muted);
       line-height: 1.65;
       margin-bottom: 36px;
       font-style: italic;
@@ -378,7 +380,7 @@
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: rgba(245,240,232,.3);
+      color: var(--wizard-muted);
       margin-bottom: 10px;
     }
     .wiz-input, .wiz-textarea {
@@ -395,7 +397,7 @@
       border-radius: 0;
       -webkit-appearance: none;
     }
-    .wiz-input::placeholder, .wiz-textarea::placeholder { color: rgba(245,240,232,.18); }
+    .wiz-input::placeholder, .wiz-textarea::placeholder { color: var(--wizard-subtle); }
     .wiz-input:focus, .wiz-textarea:focus { border-bottom-color: var(--gold); }
     .wiz-input.error, .wiz-textarea.error { border-bottom-color: rgba(239,68,68,.7); }
     .wiz-textarea { min-height: 110px; resize: none; line-height: 1.7; }
@@ -451,7 +453,7 @@
       gap: 7px;
       padding: 14px 18px;
       background: transparent;
-      color: rgba(245,240,232,.38);
+      color: var(--wizard-muted);
       font-family: var(--font-body);
       font-size: 13px;
       border: none;
@@ -461,7 +463,7 @@
     .btn-wiz-back:hover { color: var(--cream); }
     .btn-wiz-skip {
       font-size: 13px;
-      color: rgba(245,240,232,.25);
+      color: var(--wizard-muted);
       background: none;
       border: none;
       cursor: pointer;
@@ -588,7 +590,7 @@
       gap: 7px;
       padding: 12px 20px;
       background: transparent;
-      color: rgba(245,240,232,.5);
+      color: var(--wizard-muted);
       font-family: var(--font-body);
       font-size: 13px;
       border: 1px solid rgba(245,240,232,.14);
@@ -600,10 +602,12 @@
     .rec-badge {
       display: flex; align-items: center; gap: 6px;
       font-size: 12px;
-      color: rgba(245,240,232,.4);
+      color: var(--wizard-muted);
     }
     .rec-badge svg { color: #22c55e; }
-    .fallback-note { font-size: 12px; color: rgba(245,240,232,.22); margin-top: 10px; line-height: 1.5; }
+    .fallback-note { font-size: 12px; color: var(--wizard-muted); margin-top: 10px; line-height: 1.5; }
+    .wiz-privacy { font-size: 13px; line-height: 1.6; color: var(--wizard-muted); margin-top: 16px; }
+    .wiz-privacy a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
 
     /* Processing */
     .proc-wrap { text-align: center; padding: 40px 0; }
@@ -623,8 +627,9 @@
     }
     .proc-msg {
       font-size: 14px;
-      color: rgba(245,240,232,.38);
-      height: 20px;
+      color: var(--wizard-muted);
+      min-height: 1.5em;
+      line-height: 1.6;
       transition: opacity .35s;
     }
 
@@ -646,7 +651,7 @@
     .res-pre {
       font-size: 12px; font-weight: 600;
       letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(245,240,232,.3); margin-bottom: 14px;
+      color: var(--wizard-muted); margin-bottom: 14px;
     }
     .res-count-row {
       display: flex;
@@ -666,7 +671,7 @@
       font-family: var(--font-display);
       font-size: clamp(20px, 4vw, 36px);
       font-weight: 700;
-      color: rgba(245,240,232,.4);
+      color: var(--wizard-muted);
     }
     .res-headline {
       font-family: var(--font-display);
@@ -699,8 +704,8 @@
       color: var(--cream); margin-bottom: 8px;
     }
     .res-cta-desc {
-      font-size: 13px;
-      color: rgba(245,240,232,.38);
+      font-size: 14px;
+      color: var(--wizard-muted);
       line-height: 1.65;
       margin-bottom: 22px;
     }
@@ -710,7 +715,7 @@
       gap: 9px;
       padding: 15px 34px;
       background: #25D366;
-      color: white;
+      color: #080717;
       font-family: var(--font-body);
       font-size: 14px; font-weight: 700;
       border: none;
@@ -724,7 +729,7 @@
       transform: translateY(-1px);
       box-shadow: 0 8px 26px rgba(37,211,102,.28);
     }
-    .res-footnote { font-size: 11px; color: rgba(245,240,232,.18); margin-top: 14px; }
+    .res-footnote { font-size: 13px; color: var(--wizard-muted); margin-top: 14px; }
 
     /* Answer mode toggle (vídeo / escrito) */
     .answer-mode {
@@ -744,7 +749,7 @@
       border: none;
       border-radius: 999px;
       background: transparent;
-      color: rgba(245,240,232,.45);
+      color: var(--wizard-muted);
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 600;
@@ -947,7 +952,7 @@
             <span class="field-err" id="cPhone-err">Campo obrigatório</span>
           </div>
         </div>
-        <p style="font-size:13px;line-height:1.6;color:var(--navy);margin-top:16px">Saiba como usamos seus dados e respostas na <a href="/politica-de-privacidade" target="_blank" rel="noopener" style="text-decoration:underline">Política de Privacidade</a>.</p>
+        <p class="wiz-privacy">Saiba como usamos seus dados e respostas na <a href="/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
         <div class="wiz-actions">
           <button class="btn-wiz-next" id="nextContact">
             Continuar

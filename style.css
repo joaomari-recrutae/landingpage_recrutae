@@ -1659,7 +1659,7 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.75);
 }
 .contact-info-val {
   font-size: 14px;
@@ -1700,7 +1700,7 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.75);
 }
 
 .form-group input,
@@ -1719,7 +1719,7 @@ ul { list-style: none; }
   transition: border-color var(--transition), background var(--transition);
 }
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+.form-group textarea::placeholder { color: rgba(255,255,255,0.65); }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
