@@ -25,8 +25,8 @@ test('os arquivos fornecidos respondem na raiz pública e o sitemap lista URLs c
     if (name === 'robots.txt') assert.match(text, /Sitemap: https:\/\/www\.recrutae\.com\.br\/sitemap\.xml/);
     if (name === 'sitemap.xml') {
       const urls = [...text.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
-      assert.equal(urls.length, 44);
-      assert.equal(new Set(urls).size, 44);
+      assert.equal(urls.length, 45);
+      assert.equal(new Set(urls).size, 45);
       for (const url of urls) {
         assert.equal(new URL(url).origin, 'https://www.recrutae.com.br');
         assert.ok(!url.includes('.html'), url);

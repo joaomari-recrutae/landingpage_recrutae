@@ -38,6 +38,6 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4173';
       assert.equal(await raw.locator('link[rel="canonical"]').getAttribute('href'), 'https://www.recrutae.com.br' + route);
     }
     await plain.close();
-    console.log('PASS: all 44 sitemap pages render; 8 articles, 14 industries and 14 positions have distinct content; canonical metadata works with and without JavaScript; zero runtime errors.');
+    console.log('PASS: all 45 sitemap pages render; 8 articles, 14 industries and 14 positions have distinct content; canonical metadata works with and without JavaScript; zero runtime errors.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

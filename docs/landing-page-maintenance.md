@@ -29,3 +29,9 @@ Fontes originais locais em `assets/fonts/`, com licenças e proveniência, decla
 A FAQ usa fatos dos serviços e o prazo de shortlist confirmado pelo usuário. Os relatos publicados são de candidatos; as empresas exibidas são clientes da consultoria. Não há case empresarial detalhado aprovado; consulte `docs/company-cases.md` antes de preencher `data/company-cases.json` e publicar novos relatos.
 
 A 404 é estática e não depende de JavaScript, CMS ou API. Seus recursos e links usam caminhos a partir de `/`, inclusive quando solicitada em pastas profundas. A Vercel serve `404.html` automaticamente para caminhos não encontrados, e os templates inválidos usam o mesmo documento com status 404.
+
+## Condições gerais de contratação
+
+O texto aprovado do advogado fica em `data/contract-terms.json`, com o SHA-256 do DOCX original. Após qualquer revisão jurídica autorizada, atualize a fonte e rode `node scripts/update-contract-terms.cjs`, seguido de `node scripts/export-contract-pdf.cjs` com Playwright/Chromium disponíveis. O segundo comando gera `assets/documentos/condicoes-gerais-de-contratacao.pdf`, que deve ser versionado junto com a página HTML. O PDF é estático e não exige API, CMS ou scripts para baixar.
+
+Confira todos os parágrafos e o PDF antes de publicar. `node scripts/verify-contract-terms.cjs` verifica o texto, índice, download, impressão e retorno ao site em desktop e celular; `SITE_URL` permite repetir a conferência na produção. Os links das condições ficam junto à Política de Privacidade nos rodapés públicos.

@@ -75,5 +75,16 @@ const canonical = html => html.match(/<link rel="canonical" href="([^"]+)"/)[1].
     assert.ok((await response.text()).includes('Essa página faltou à entrevista.'), route);
   }
   for (const route of ['/fonts.css', '/analytics.js', '/assets/fonts/bricolage-grotesque-latin.woff2', '/assets/fonts/dm-sans-latin.woff2']) assert.equal((await request(base + route)).status, 200, route);
-  console.log(`PASS ${base}: three exact files, ${checked} sitemap URLs return 200 without redirects and with matching canonical/social URLs, clean internal links, five legacy redirects preserve queries, admin alias responds.`);
+  const terms = require('cheerio').load(await (await request(base + '/condicoes-gerais-de-contratacao')).text());
+  const normalize = text => text.replace(/\s+/g, ' ').trim();
+  assert.deepEqual(terms('[data-source-paragraph]').map((_, element) => normalize(terms(element).text())).get(), require('../data/contract-terms.json').paragraphs.map(normalize));
+  assert.equal(terms('#copyTermsLink, #termsShareUrl').length, 0);
+  assert.equal(terms('.terms-hero button, .terms-hero a').length, 0);
+  const pdfPath = terms('#downloadTerms').attr('href');
+  assert.equal(pdfPath, '/assets/documentos/condicoes-gerais-de-contratacao.pdf');
+  const pdf = await request(base + pdfPath);
+  assert.equal(pdf.status, 200, 'Download PDF');
+  assert.match(pdf.headers.get('content-type'), /^application\/pdf/);
+  assert.deepEqual(Buffer.from(await pdf.arrayBuffer()), fs.readFileSync(path.resolve(__dirname, '..' + pdfPath)), 'Published PDF matches the verified original');
+  console.log(`PASS ${base}: three exact files, ${checked} sitemap URLs return 200 without redirects and with matching canonical/social URLs, clean internal links, five legacy redirects preserve queries, admin alias responds; all 67 legal paragraphs and the exact downloadable PDF match.`);
 })().catch(error => { console.error(error.message); process.exitCode = 1; });
