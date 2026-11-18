@@ -55,9 +55,12 @@ const normalize = text => text.replace(/\s+/g, ' ').trim();
       const download = page.waitForEvent('download');
       await page.locator('#downloadTerms').click();
       const received = await download;
-      assert.match(received.suggestedFilename(), /Recrutae\.pdf$/);
+      // The host can choose the filename through Content-Disposition.
+      assert.match(received.suggestedFilename(), /\.pdf$/i);
       const receivedFile = await received.path();
-      assert.equal(fs.readFileSync(receivedFile).subarray(0, 5).toString(), '%PDF-');
+      const receivedBytes = fs.readFileSync(receivedFile);
+      assert.equal(receivedBytes.subarray(0, 5).toString(), '%PDF-');
+      assert.deepEqual(receivedBytes, fs.readFileSync(path.resolve(__dirname, '../assets/documentos/condicoes-gerais-de-contratacao.pdf')));
       await page.locator('#printTerms').click();
       assert.equal(await page.evaluate(() => window.printInvoked), true);
       await page.goto(base + '/');
